@@ -37,7 +37,31 @@
 <div class="focus-overlay" id="focusOverlay">
   <div class="focus-content" id="focusContent"></div>
 </div>
+
+  <script>
+  const items = document.querySelectorAll('.item');
+  const overlay = document.getElementById('focusOverlay');
+  const content = document.getElementById('focusContent');
+
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      content.innerHTML = item.innerHTML;
+      overlay.classList.add('active');
+    });
+  });
+
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      overlay.classList.remove('active');
+    }
+  });
+</script>
   
 </body>
 </html>
+
 
