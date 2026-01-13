@@ -119,6 +119,12 @@ body {
   object-fit: cover;
   display: block;
 }
+.logo-mark {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #FFBC00;
+  margin-bottom: 24px;
+
 
 
 
