@@ -43,10 +43,7 @@ body {
   align-items: center;
   justify-content: center;
   border: 1px solid #FFBC00;
-
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeUp 0.8s ease forwards;
+  overflow: hidden;
 }
 
 .item:hover {.item:nth-child(1) { animation-delay: 0.1s; }
@@ -124,6 +121,7 @@ body {
   object-fit: cover;
   display: block;
 }
+
 
 
 
