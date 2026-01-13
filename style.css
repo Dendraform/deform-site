@@ -120,12 +120,14 @@ body {
   display: block;
 }
 .logo-mark {
-  width: 48px;
-  height: 48px;
-  border: 1px solid #FFBC00;
+  width: 56px;
+  height: 56px;
+  border: 1px solid #FFBC00; /* квадрат */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 24px;
-
-
+}
 
 
 
