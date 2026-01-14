@@ -70,55 +70,53 @@
 
 </section>
 
-  <!-- CONTACT -->
-  <section class="contact">
-    <p>Contact: <a href="mailto:example@example.com">example@example.com</a></p>
-  </section>
-  <script>
-  const items = document.querySelectorAll('.gallery .item img');
-  const overlay = document.getElementById('focusOverlay');
-  const focusImage = document.getElementById('focusImage');
+ <!-- CONTACT -->
+<section class="contact">
+  <p>Contact: <a href="mailto:example@example.com">example@example.com</a></p>
+</section>
 
-  items.forEach(img => {
-    img.addEventListener('click', () => {
-      focusImage.src = img.src;
-      overlay.classList.add('active');
-    });
-  });
-
-  overlay.addEventListener('click', () => {
-    overlay.classList.remove('active');
-    focusImage.src = '';
-  });
-</script>
-  <script>
+<script>
 const filterButtons = document.querySelectorAll('.gallery-filter button');
-const galleryItems = document.querySelectorAll('.gallery .item');
+const gallery = document.querySelector('.gallery');
 
+// Обработчик фильтрации
 filterButtons.forEach(button => {
   button.addEventListener('click', () => {
-
-    // активное состояние кнопок
-    filterButtons.forEach(btn => btn.classList.remove('active'));
+    filterButtons.forEach(b => b.classList.remove('active'));
     button.classList.add('active');
 
     const filter = button.dataset.filter;
 
-    galleryItems.forEach(item => {
-      const category = item.dataset.category;
+    document.querySelectorAll('.gallery .item').forEach(item => {
+      const cat = item.dataset.category;
 
-      if (filter === 'all' || category === filter) {
-        item.style.display = 'flex';
-        item.style.opacity = '0';
-        item.style.animation = 'fadeUp 0.4s ease forwards';
+      if (filter === 'all' || cat === filter) {
+        item.classList.remove('is-hidden');
       } else {
-        item.style.display = 'none';
+        item.classList.add('is-hidden');
       }
     });
   });
 });
-</script>
 
+// Делегирование: открываем Lightbox на click
+gallery.addEventListener('click', (e) => {
+  if (e.target.tagName === 'IMG') {
+    const src = e.target.getAttribute('src');
+    const overlay = document.getElementById('focusOverlay');
+    const focusImage = document.getElementById('focusImage');
+    focusImage.src = src;
+    overlay.classList.add('active');
+  }
+});
+
+// Закрытие Lightbox
+document.getElementById('focusOverlay')
+  .addEventListener('click', function () {
+    this.classList.remove('active');
+    document.getElementById('focusImage').src = '';
+});
+</script>
 </body>
 </html>
 
