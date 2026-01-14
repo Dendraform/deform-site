@@ -142,13 +142,11 @@ body {
   border-radius: 50%;
   position: relative;
 }
-/* поочерёдное появление элементов галереи */
 .gallery .item {
   animation: fadeUp 0.6s ease forwards;
   will-change: transform, opacity;
 }
 
-/* анимация */
 @keyframes fadeUp {
   from {
     opacity: 0.001;
@@ -160,11 +158,11 @@ body {
   }
 }
 
-/* задержки по порядку */
 .gallery .item:nth-child(1) { animation-delay: 0.1s; }
 .gallery .item:nth-child(2) { animation-delay: 0.2s; }
 .gallery .item:nth-child(3) { animation-delay: 0.3s; }
 .gallery .item:nth-child(4) { animation-delay: 0.4s; }
+
 
 
 
