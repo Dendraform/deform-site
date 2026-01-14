@@ -128,6 +128,23 @@ body {
   justify-content: center;
   margin-bottom: 24px;
 }
+.logo-mark::before {
+  content: "";
+  width: 38px;
+  height: 38px;
+  border: 1px solid #FFBC00; /* круг */
+  border-radius: 50%;
+  position: relative;
+}
+.logo-mark::after {
+  content: "";
+  width: 14px;
+  height: 28px;
+  border-left: 1px solid #FFBC00;
+  border-radius: 50% 0 0 50%;
+  position: absolute;
+}
+
 
 
 
