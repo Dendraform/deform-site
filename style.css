@@ -80,3 +80,12 @@ body {
 .item img {
   width: auto;         /* сохраняем оригинальную ширину */
   max-width: 100%;     /* о*
+
+  .focus-content img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
