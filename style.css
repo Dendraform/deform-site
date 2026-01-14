@@ -138,11 +138,12 @@ body {
 }
 .logo-mark::after {
   content: "";
-  width: 14px;
-  height: 28px;
-  border-left: 1px solid #FFBC00;
-  border-radius: 50% 0 0 50%;
+  width: 20px;
+  height: 32px;
   position: absolute;
+  border-left: 1px solid #FFBC00;
+  border-right: 1px solid #FFBC00;
+  border-radius: 50%;
 }
 
 
