@@ -119,10 +119,12 @@ body {
   object-fit: cover;
   display: block;
 }
+/* квадрат */
 .logo-mark {
   width: 56px;
   height: 56px;
-  border: 1px solid #FFBC00; /* квадрат */
+  border: 1px solid #FFBC00;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -136,15 +138,12 @@ body {
   border-radius: 50%;
   position: relative;
 }
-.logo-mark::after {
-  content: "";
-  width: 20px;
+.logo-wave {
+  width: 14px;
   height: 32px;
-  position: absolute;
-  border-left: 1px solid #FFBC00;
-  border-right: 1px solid #FFBC00;
-  border-radius: 50%;
+  z-index: 1;
 }
+
 
 
 
