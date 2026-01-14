@@ -51,7 +51,7 @@ body {
   height: 38px;
   border: 1px solid #FFBC00; /* круг */
   border-radius: 50%;
-  position: absolute; /* центрирование */
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -74,29 +74,23 @@ body {
   overflow: hidden;
   will-change: transform, opacity;
   animation: fadeUp 0.6s ease forwards;
-  min-height: 300px; /* минимальная высота для сетки */
+  min-height: 300px;
 }
 
 .item img {
-  width: auto;         /* сохраняем оригинальную ширину */
-  max-width: 100%;     /* ограничиваем контейнером */
-  height: auto;        /* сохраняем пропорции */
-  max-height: 100%;    /* ограничиваем контейнером */
-  object-fit: contain; /* чтобы не обрезалось */
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
   display: block;
-  cursor: pointer;     /* чтобы показывалось, что фото кликабельно */
+  cursor: pointer;
 }
 
 /* ===== АНИМАЦИЯ GALLERY ===== */
 @keyframes fadeUp {
-  from {
-    opacity: 0.001;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0.001; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .gallery .item:nth-child(1) { animation-delay: 0.1s; }
@@ -135,14 +129,50 @@ body {
   border: 1px solid #FFBC00;
   border-radius: 4px;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  pointer-events: auto;
 }
 
 .focus-content img {
   display: block;
   max-width: 100%;
-  max-height: 80vh; /* чтобы не уходило за экран */
+  max-height: 80vh;
   width: auto;
   height: auto;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ===== ABOUT ===== */
+.about {
+  padding: 80px 40px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid #FFBC00;
+}
+
+.contact a {
+  color: #FFBC00;
+  text-decoration: none;
+  border-bottom: 1px solid #FFBC00;
+}
+
+/* ===== MOBILE SUPPORT ===== */
+@media (max-width: 600px) {
+  .focus-content {
+    padding: 8px;
+    max-width: 90%;
+    max-height: 90%;
+  }
+
+  .focus-content img {
+    max-width: 100%;
+    max-height: 70vh;
+  }
 }
