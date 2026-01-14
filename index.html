@@ -42,8 +42,27 @@
   <section class="contact">
     <p>Contact: <a href="mailto:example@example.com">example@example.com</a></p>
   </section>
+  <script>
+  const items = document.querySelectorAll('.gallery .item img');
+  const overlay = document.getElementById('focusOverlay');
+  const focusImage = document.getElementById('focusImage');
+
+  items.forEach(img => {
+    img.addEventListener('click', () => {
+      focusImage.src = img.src;
+      overlay.classList.add('active');
+    });
+  });
+
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    focusImage.src = '';
+  });
+</script>
+
 
 </body>
 </html>
+
 
 
