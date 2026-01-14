@@ -4,73 +4,41 @@
   <meta charset="UTF-8">
   <title>Deform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Стили -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="hero">
-  <div class="logo-mark"></div>
-  <h1>Deform</h1>
-  <p>Interior objects as sculptural form</p>
-</header>
+  <!-- HERO / ЛОГОТИП -->
+  <header class="hero">
+    <div class="logo-mark"></div>
+    <h1>Deform</h1>
+    <p>Interior objects as sculptural form</p>
+  </header>
 
-<section class="gallery">
-  <div class="item">
-    <img src="images/object-01.jpg" alt="Deform object 01">
-  </div>
-  <div class="item">
-    <img src="images/object-02.jpg" alt="Deform object 02">
-  </div>
-  <div class="item">
-    <img src="images/object-03.jpg" alt="Deform object 03">
-  </div>
-  <div class="item">
-    <img src="images/object-04.jpg" alt="Deform object 04">
-  </div>
-</section>
+  <!-- GALERIA -->
+  <section class="gallery">
+    <div class="item"><img src="images/object-01.jpg" alt="Deform object 01"></div>
+    <div class="item"><img src="images/object-02.jpg" alt="Deform object 02"></div>
+    <div class="item"><img src="images/object-03.jpg" alt="Deform object 03"></div>
+    <div class="item"><img src="images/object-04.jpg" alt="Deform object 04"></div>
+  </section>
 
+  <!-- ABOUT -->
+  <section class="about">
+    <p>About content goes here…</p>
+  </section>
 
-<section class="about">
-  <p>
-    Deform explores the boundary between function and sculpture.<br>
-    Each object is created as a physical form — a presence in space rather than a product.
-  </p>
-</section>
+  <!-- CONTACT -->
+  <section class="contact">
+    <p>Contact: <a href="mailto:example@example.com">example@example.com</a></p>
+  </section>
 
-<footer class="contact">
-  <p>For collaboration and commissions</p>
-  <a href="mailto:your@email.com">Contact</a>
-</footer>
-  
-<div class="focus-overlay" id="focusOverlay">
-  <div class="focus-content" id="focusContent"></div>
-</div>
-
-  <script>
-  const items = document.querySelectorAll('.item');
-  const overlay = document.getElementById('focusOverlay');
-  const content = document.getElementById('focusContent');
-
-  items.forEach(item => {
-    item.addEventListener('click', () => {
-      content.innerHTML = item.innerHTML;
-      overlay.classList.add('active');
-    });
-  });
-
-  overlay.addEventListener('click', () => {
-    overlay.classList.remove('active');
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      overlay.classList.remove('active');
-    }
-  });
-</script>
-  
 </body>
 </html>
+
+
 
 
 
