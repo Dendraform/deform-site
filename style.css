@@ -65,6 +65,14 @@ body {
   padding: 80px 40px;
 }
 
+/* ===== GALLERY FILTER ===== */
+.gallery-filter {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  padding: 40px 0 0;
+}
+
 .item {
   background: #21242B;
   display: flex;
@@ -176,3 +184,4 @@ body {
     max-height: 70vh;
   }
 }
+
