@@ -74,15 +74,18 @@ document.addEventListener('DOMContentLoaded', () => {
   filterButtons.forEach(button => {
     button.addEventListener('click', () => {
 
+      // Активная кнопка
       filterButtons.forEach(b => b.classList.remove('active'));
       button.classList.add('active');
 
       const filter = button.dataset.filter;
 
+      // Перебираем все элементы галереи
       items.forEach(item => {
         const category = item.dataset.category;
 
-        if (filter === 'all' || category === filter) {
+        // Строгое совпадение категории
+        if (category === filter) {
           item.classList.remove('is-hidden');
         } else {
           item.classList.add('is-hidden');
@@ -104,12 +107,20 @@ document.addEventListener('DOMContentLoaded', () => {
     focusImage.src = '';
   });
 
+  /* ===== ПО УМОЛЧАНИЮ ПОКАЗЫВАЕМ OBJECTS ===== */
+  items.forEach(item => {
+    if (item.dataset.category !== 'objects') {
+      item.classList.add('is-hidden');
+    }
+  });
+
 });
 </script>
 
 </body>
 
 </html>
+
 
 
 
