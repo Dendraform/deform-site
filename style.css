@@ -37,7 +37,7 @@ body {
 .logo-mark {
   width: 56px;
   height: 56px;
-  border: 1px solid #FFBC00; /* квадрат */
+  border: 1px solid #FFBC00; 
   position: relative;
   display: flex;
   align-items: center;
@@ -49,7 +49,7 @@ body {
   content: "";
   width: 38px;
   height: 38px;
-  border: 1px solid #FFBC00; /* круг */
+  border: 1px solid #FFBC00; 
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -119,25 +119,40 @@ body {
   cursor: pointer;
 }
 
-/* ===== ПРОЕКТЫ В OBJECTS ===== */
+/* ===== PROJECTS ===== */
 .project {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  gap: 8px;
 }
 
-.project img {
-  cursor: pointer;
-  max-width: 100%;
-  height: auto;
+.project .thumbnails {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.project .thumbnails img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
   border: 1px solid #FFBC00;
+  cursor: pointer;
   transition: transform 0.3s ease;
 }
 
-.project img:hover {
-  transform: scale(1.05);
+.project .thumbnails img:hover {
+  transform: scale(1.1);
 }
 
-/* ===== LIGHTBOX / FOCUS MODE ===== */
+.project .main-image {
+  max-width: 100%;
+  height: auto;
+  cursor: pointer;
+  border: 1px solid #FFBC00;
+}
+
+/* ===== LIGHTBOX ===== */
 .focus-overlay {
   position: fixed;
   top: 0;
