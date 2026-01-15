@@ -73,47 +73,51 @@
         button.classList.add('active');
 
 <script>
-const filterButtons = document.querySelectorAll('.gallery-filter button');
-const gallery = document.querySelector('.gallery');
+document.addEventListener('DOMContentLoaded', () => {
 
-filterButtons.forEach(button => {
-  button.addEventListener('click', () => {
-    filterButtons.forEach(b => b.classList.remove('active'));
-    button.classList.add('active');
+  const filterButtons = document.querySelectorAll('.gallery-filter button');
+  const items = document.querySelectorAll('.gallery .item');
+  const overlay = document.getElementById('focusOverlay');
+  const focusImage = document.getElementById('focusImage');
 
-    const filter = button.dataset.filter;
+  /* ---------- FILTER ---------- */
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
 
-    document.querySelectorAll('.gallery .item').forEach(item => {
-      const cat = item.dataset.category;
+      filterButtons.forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
 
-      if (filter === 'all' || cat === filter) {
-        item.classList.remove('is-hidden');
-      } else {
-        item.classList.add('is-hidden');
-      }
+      const filter = button.dataset.filter;
+
+      items.forEach(item => {
+        const category = item.dataset.category;
+
+        if (filter === 'all' || category === filter) {
+          item.classList.remove('is-hidden');
+        } else {
+          item.classList.add('is-hidden');
+        }
+      });
     });
   });
+
+  /* ---------- LIGHTBOX ---------- */
+  document.querySelector('.gallery').addEventListener('click', (e) => {
+    if (e.target.tagName === 'IMG') {
+      focusImage.src = e.target.src;
+      overlay.classList.add('active');
+    }
+  });
+
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    focusImage.src = '';
+  });
+
 });
 </script>
-
-    // Делегирование: открываем Lightbox на click
-    gallery.addEventListener('click', (e) => {
-      if (e.target.tagName === 'IMG') {
-        const src = e.target.getAttribute('src');
-        const overlay = document.getElementById('focusOverlay');
-        const focusImage = document.getElementById('focusImage');
-        focusImage.src = src;
-        overlay.classList.add('active');
-      }
-    });
-
-    // Закрытие Lightbox
-    document.getElementById('focusOverlay').addEventListener('click', function () {
-      this.classList.remove('active');
-      document.getElementById('focusImage').src = '';
-    });
-  </script>
 
 </body>
 
 </html>
+
