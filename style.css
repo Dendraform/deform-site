@@ -98,11 +98,8 @@ body {
   cursor: pointer;
 }
 
-/* HIDDEN */
 .item.is-hidden {
-  opacity: 0;
-  transform: scale(0.96);
-  pointer-events: none;
+  display: none;
 }
 
 /* LIGHTBOX */
@@ -158,3 +155,4 @@ body {
     transform: translateY(0);
   }
 }
+
