@@ -72,19 +72,29 @@
         filterButtons.forEach(b => b.classList.remove('active'));
         button.classList.add('active');
 
-        const filter = button.dataset.filter;
+<script>
+const filterButtons = document.querySelectorAll('.gallery-filter button');
+const gallery = document.querySelector('.gallery');
 
-        document.querySelectorAll('.gallery .item').forEach(item => {
-          const cat = item.dataset.category;
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    filterButtons.forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
 
-          if (filter === 'all' || cat === filter) {
-            item.classList.remove('is-hidden');
-          } else {
-            item.classList.add('is-hidden');
-          }
-        });
-      });
+    const filter = button.dataset.filter;
+
+    document.querySelectorAll('.gallery .item').forEach(item => {
+      const cat = item.dataset.category;
+
+      if (filter === 'all' || cat === filter) {
+        item.classList.remove('is-hidden');
+      } else {
+        item.classList.add('is-hidden');
+      }
     });
+  });
+});
+</script>
 
     // Делегирование: открываем Lightbox на click
     gallery.addEventListener('click', (e) => {
@@ -105,4 +115,5 @@
   </script>
 
 </body>
+
 </html>
