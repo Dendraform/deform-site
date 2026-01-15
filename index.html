@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <title>Deform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- СТИЛИ САЙТА -->
   <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
@@ -28,17 +31,23 @@
     <!-- Objects: Проект 1 -->
     <div class="item" data-category="objects">
       <div class="project">
-        <img src="images/object-01.jpg" alt="Project 1 - Image 1">
-        <img src="images/object-02.jpg" alt="Project 1 - Image 2">
-        <img src="images/object-03.jpg" alt="Project 1 - Image 3">
+        <div class="thumbnails">
+          <img src="images/object-01.jpg" alt="Object 1">
+          <img src="images/object-02.jpg" alt="Object 2">
+          <img src="images/object-03.jpg" alt="Object 3">
+        </div>
+        <img src="images/object-01.jpg" alt="Object 1 Main" class="main-image">
       </div>
     </div>
 
     <!-- Objects: Проект 2 -->
     <div class="item" data-category="objects">
       <div class="project">
-        <img src="images/object-04.jpg" alt="Project 2 - Image 1">
-        <img src="images/object-05.jpg" alt="Project 2 - Image 2">
+        <div class="thumbnails">
+          <img src="images/object-04.jpg" alt="Object 4">
+          <img src="images/object-05.jpg" alt="Object 5">
+        </div>
+        <img src="images/object-04.jpg" alt="Object 4 Main" class="main-image">
       </div>
     </div>
 
@@ -69,11 +78,11 @@
     <p>
       <a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a> | 
       <a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a>
-      <!-- Телефон позже -->
+      <!-- Телефон можно вставить позже -->
     </p>
   </section>
 
-  <!-- JS: FILTER + LIGHTBOX -->
+  <!-- JS: FILTER + LIGHTBOX + MINIATURES -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
 
@@ -93,7 +102,6 @@
         button.classList.add('active');
 
         const filter = button.dataset.filter;
-
         items.forEach(item => {
           const category = item.dataset.category;
           if (category === filter) {
@@ -108,19 +116,15 @@
     /* ===== LIGHTBOX С НАВИГАЦИЕЙ ===== */
     gallery.addEventListener('click', e => {
       if (e.target.tagName === 'IMG') {
-
-        // Определяем проект, к которому принадлежит фото
         const project = e.target.closest('.project') || e.target.closest('.item');
         currentProjectImages = Array.from(project.querySelectorAll('img'));
         currentIndex = currentProjectImages.indexOf(e.target);
 
-        // Показываем Lightbox
         focusImage.src = e.target.src;
         overlay.classList.add('active');
       }
     });
 
-    /* ===== НАВИГАЦИЯ СТРЕЛКАМИ ===== */
     document.addEventListener('keydown', e => {
       if (!overlay.classList.contains('active')) return;
 
@@ -138,10 +142,21 @@
       }
     });
 
-    /* ===== ЗАКРЫТИЕ КЛИКОМ ===== */
     overlay.addEventListener('click', () => {
       overlay.classList.remove('active');
       focusImage.src = '';
+    });
+
+    /* ===== МИНИАТЮРЫ ===== */
+    document.querySelectorAll('.project').forEach(project => {
+      const thumbnails = project.querySelectorAll('.thumbnails img');
+      const mainImage = project.querySelector('.main-image');
+
+      thumbnails.forEach((thumb, index) => {
+        thumb.addEventListener('click', () => {
+          mainImage.src = thumb.src;
+        });
+      });
     });
 
     /* ===== ПО УМОЛЧАНИЮ ПОКАЗЫВАЕМ OBJECTS ===== */
