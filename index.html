@@ -4,21 +4,18 @@
   <meta charset="UTF-8">
   <title>Deform</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- СТИЛИ САЙТА -->
   <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 
-  <!-- HERO / ЛОГОТИП -->
+  <!-- HERO -->
   <header class="hero">
     <div class="logo-mark"></div>
     <h1>Deform</h1>
     <p>Interior objects as sculptural form</p>
   </header>
 
-  <!-- GALLERY FILTER -->
+  <!-- FILTER BUTTONS -->
   <div class="gallery-filter">
     <button data-filter="objects" class="active">Objects</button>
     <button data-filter="paintings">Paintings</button>
@@ -40,17 +37,6 @@
       </div>
     </div>
 
-    <!-- Objects: Проект 2 -->
-    <div class="item" data-category="objects">
-      <div class="project">
-        <div class="thumbnails">
-          <img src="images/object-04.jpg" alt="Object 4">
-          <img src="images/object-05.jpg" alt="Object 5">
-        </div>
-        <img src="images/object-04.jpg" alt="Object 4 Main" class="main-image">
-      </div>
-    </div>
-
     <!-- Paintings -->
     <div class="item" data-category="paintings">
       <img src="images/painting-01.jpg" alt="Painting 01">
@@ -65,7 +51,7 @@
 
   </section>
 
-  <!-- LIGHTBOX / FOCUS MODE -->
+  <!-- LIGHTBOX -->
   <div class="focus-overlay" id="focusOverlay">
     <div class="focus-content">
       <img src="" alt="Deform object" id="focusImage">
@@ -78,14 +64,12 @@
     <p>
       <a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a> | 
       <a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a>
-      <!-- Телефон можно вставить позже -->
     </p>
   </section>
 
-  <!-- JS: FILTER + LIGHTBOX + MINIATURES -->
+  <!-- JS: Фильтр + Lightbox + Миниатюры -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-
     const filterButtons = document.querySelectorAll('.gallery-filter button');
     const items = document.querySelectorAll('.gallery .item');
     const overlay = document.getElementById('focusOverlay');
@@ -95,7 +79,7 @@
     let currentProjectImages = [];
     let currentIndex = 0;
 
-    /* ===== ФИЛЬТРАЦИЯ ===== */
+    /* ===== Фильтрация ===== */
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
@@ -113,7 +97,7 @@
       });
     });
 
-    /* ===== LIGHTBOX С НАВИГАЦИЕЙ ===== */
+    /* ===== Lightbox с навигацией ===== */
     gallery.addEventListener('click', e => {
       if (e.target.tagName === 'IMG') {
         const project = e.target.closest('.project') || e.target.closest('.item');
@@ -147,19 +131,19 @@
       focusImage.src = '';
     });
 
-    /* ===== МИНИАТЮРЫ ===== */
+    /* ===== Миниатюры проектов ===== */
     document.querySelectorAll('.project').forEach(project => {
       const thumbnails = project.querySelectorAll('.thumbnails img');
       const mainImage = project.querySelector('.main-image');
 
-      thumbnails.forEach((thumb, index) => {
+      thumbnails.forEach(thumb => {
         thumb.addEventListener('click', () => {
           mainImage.src = thumb.src;
         });
       });
     });
 
-    /* ===== ПО УМОЛЧАНИЮ ПОКАЗЫВАЕМ OBJECTS ===== */
+    /* ===== По умолчанию показываем Objects ===== */
     items.forEach(item => {
       if (item.dataset.category !== 'objects') {
         item.classList.add('is-hidden');
