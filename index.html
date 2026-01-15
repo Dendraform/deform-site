@@ -25,27 +25,27 @@
   <!-- GALLERY -->
   <section class="gallery">
 
-    <!-- Objects: Проект 1 -->
+    <!-- Objects -->
     <div class="item" data-category="objects">
-      <div class="project">
-        <div class="thumbnails">
-          <img src="images/object-01.jpg" alt="Object 1">
-          <img src="images/object-02.jpg" alt="Object 2">
-          <img src="images/object-03.jpg" alt="Object 3">
-        </div>
-        <img src="images/object-01.jpg" alt="Object 1 Main" class="main-image">
-      </div>
+      <img src="images/object-01.jpg" alt="Object 01">
+    </div>
+    <div class="item" data-category="objects">
+      <img src="images/object-02.jpg" alt="Object 02">
     </div>
 
     <!-- Paintings -->
     <div class="item" data-category="paintings">
       <img src="images/painting-01.jpg" alt="Painting 01">
+    </div>
+    <div class="item" data-category="paintings">
       <img src="images/painting-02.jpg" alt="Painting 02">
     </div>
 
     <!-- Illustrations -->
     <div class="item" data-category="illustrations">
       <img src="images/illustration-01.jpg" alt="Illustration 01">
+    </div>
+    <div class="item" data-category="illustrations">
       <img src="images/illustration-02.jpg" alt="Illustration 02">
     </div>
 
@@ -67,90 +67,49 @@
     </p>
   </section>
 
-  <!-- JS: Фильтр + Lightbox + Миниатюры -->
+  <!-- JS: фильтры + Lightbox -->
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.gallery-filter button');
-    const items = document.querySelectorAll('.gallery .item');
-    const overlay = document.getElementById('focusOverlay');
-    const focusImage = document.getElementById('focusImage');
-    const gallery = document.querySelector('.gallery');
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.gallery-filter button');
+      const items = document.querySelectorAll('.gallery .item');
+      const overlay = document.getElementById('focusOverlay');
+      const focusImage = document.getElementById('focusImage');
 
-    let currentProjectImages = [];
-    let currentIndex = 0;
+      // По умолчанию показываем Objects
+      items.forEach(item => {
+        if (item.dataset.category !== 'objects') item.classList.add('is-hidden');
+      });
 
-    /* ===== Фильтрация ===== */
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        filterButtons.forEach(b => b.classList.remove('active'));
-        button.classList.add('active');
+      // Фильтрация
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          filterButtons.forEach(b => b.classList.remove('active'));
+          button.classList.add('active');
+          const filter = button.dataset.filter;
 
-        const filter = button.dataset.filter;
-        items.forEach(item => {
-          const category = item.dataset.category;
-          if (category === filter) {
-            item.classList.remove('is-hidden');
-          } else {
-            item.classList.add('is-hidden');
-          }
+          items.forEach(item => {
+            if (item.dataset.category === filter) {
+              item.classList.remove('is-hidden');
+            } else {
+              item.classList.add('is-hidden');
+            }
+          });
         });
       });
-    });
 
-    /* ===== Lightbox с навигацией ===== */
-    gallery.addEventListener('click', e => {
-      if (e.target.tagName === 'IMG') {
-        const project = e.target.closest('.project') || e.target.closest('.item');
-        currentProjectImages = Array.from(project.querySelectorAll('img'));
-        currentIndex = currentProjectImages.indexOf(e.target);
+      // Lightbox
+      document.querySelector('.gallery').addEventListener('click', e => {
+        if (e.target.tagName === 'IMG') {
+          focusImage.src = e.target.src;
+          overlay.classList.add('active');
+        }
+      });
 
-        focusImage.src = e.target.src;
-        overlay.classList.add('active');
-      }
-    });
-
-    document.addEventListener('keydown', e => {
-      if (!overlay.classList.contains('active')) return;
-
-      if (e.key === 'ArrowRight') {
-        currentIndex = (currentIndex + 1) % currentProjectImages.length;
-        focusImage.src = currentProjectImages[currentIndex].src;
-      }
-      if (e.key === 'ArrowLeft') {
-        currentIndex = (currentIndex - 1 + currentProjectImages.length) % currentProjectImages.length;
-        focusImage.src = currentProjectImages[currentIndex].src;
-      }
-      if (e.key === 'Escape') {
+      overlay.addEventListener('click', () => {
         overlay.classList.remove('active');
         focusImage.src = '';
-      }
-    });
-
-    overlay.addEventListener('click', () => {
-      overlay.classList.remove('active');
-      focusImage.src = '';
-    });
-
-    /* ===== Миниатюры проектов ===== */
-    document.querySelectorAll('.project').forEach(project => {
-      const thumbnails = project.querySelectorAll('.thumbnails img');
-      const mainImage = project.querySelector('.main-image');
-
-      thumbnails.forEach(thumb => {
-        thumb.addEventListener('click', () => {
-          mainImage.src = thumb.src;
-        });
       });
     });
-
-    /* ===== По умолчанию показываем Objects ===== */
-    items.forEach(item => {
-      if (item.dataset.category !== 'objects') {
-        item.classList.add('is-hidden');
-      }
-    });
-
-  });
   </script>
 
 </body>
