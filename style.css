@@ -175,5 +175,15 @@ body {
     transform: translateY(0);
   }
 }
+/* LINKS RESET FOR PROJECTS */
+.item.project {
+  color: #FFBC00;
+  text-decoration: none;
+}
+
+.item.project:visited {
+  color: #FFBC00;
+}
+
 
 
