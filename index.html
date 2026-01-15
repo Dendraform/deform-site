@@ -2,115 +2,111 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Deform</title>
+  <title>DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="logo-mark"></div>
-    <h1>Deform</h1>
-    <p>Interior objects as sculptural form</p>
-  </header>
+<!-- HERO -->
+<header class="hero">
+  <div class="logo-mark"></div>
+  <h1>DEFORM</h1>
+  <p>Interior objects as sculptural form</p>
+</header>
 
-  <!-- FILTER BUTTONS -->
-  <div class="gallery-filter">
-    <button data-filter="objects" class="active">Objects</button>
-    <button data-filter="paintings">Paintings</button>
-    <button data-filter="illustrations">Illustrations</button>
+<!-- FILTER -->
+<div class="gallery-filter">
+  <button class="active" data-filter="objects">Objects</button>
+  <button data-filter="paintings">Paintings</button>
+  <button data-filter="illustrations">Illustrations</button>
+</div>
+
+<!-- GALLERY -->
+<section class="gallery">
+
+  <!-- OBJECTS -->
+  <div class="item" data-category="objects">
+    <img src="images/object-01.jpg" alt="">
+  </div>
+  <div class="item" data-category="objects">
+    <img src="images/object-02.jpg" alt="">
   </div>
 
-  <!-- GALLERY -->
-  <section class="gallery">
-
-    <!-- Objects -->
-    <div class="item" data-category="objects">
-      <img src="images/object-01.jpg" alt="Object 01">
-    </div>
-    <div class="item" data-category="objects">
-      <img src="images/object-02.jpg" alt="Object 02">
-    </div>
-
-    <!-- Paintings -->
-    <div class="item" data-category="paintings">
-      <img src="images/painting-01.jpg" alt="Painting 01">
-    </div>
-    <div class="item" data-category="paintings">
-      <img src="images/painting-02.jpg" alt="Painting 02">
-    </div>
-
-    <!-- Illustrations -->
-    <div class="item" data-category="illustrations">
-      <img src="images/illustration-01.jpg" alt="Illustration 01">
-    </div>
-    <div class="item" data-category="illustrations">
-      <img src="images/illustration-02.jpg" alt="Illustration 02">
-    </div>
-
-  </section>
-
-  <!-- LIGHTBOX -->
-  <div class="focus-overlay" id="focusOverlay">
-    <div class="focus-content">
-      <img src="" alt="Deform object" id="focusImage">
-    </div>
+  <!-- PAINTINGS -->
+  <div class="item is-hidden" data-category="paintings">
+    <img src="images/painting-01.jpg" alt="">
+  </div>
+  <div class="item is-hidden" data-category="paintings">
+    <img src="images/painting-02.jpg" alt="">
   </div>
 
-  <!-- CONTACT -->
-  <section class="contact">
-    <p>Contact:</p>
-    <p>
-      <a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a> | 
-      <a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a>
-    </p>
-  </section>
+  <!-- ILLUSTRATIONS -->
+  <div class="item is-hidden" data-category="illustrations">
+    <img src="images/illustration-01.jpg" alt="">
+  </div>
+  <div class="item is-hidden" data-category="illustrations">
+    <img src="images/illustration-02.jpg" alt="">
+  </div>
 
-  <!-- JS: фильтры + Lightbox -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const filterButtons = document.querySelectorAll('.gallery-filter button');
-      const items = document.querySelectorAll('.gallery .item');
-      const overlay = document.getElementById('focusOverlay');
-      const focusImage = document.getElementById('focusImage');
+</section>
 
-      // По умолчанию показываем Objects
+<!-- LIGHTBOX -->
+<div class="focus-overlay" id="focusOverlay">
+  <div class="focus-content">
+    <img id="focusImage" src="" alt="">
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact">
+  <p>
+    Email: <a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a><br>
+    Telegram: <a href="https://t.me/Doom_Doom_81" target="_blank">@Doom_Doom_81</a>
+  </p>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const buttons = document.querySelectorAll('.gallery-filter button');
+  const items = document.querySelectorAll('.gallery .item');
+  const overlay = document.getElementById('focusOverlay');
+  const focusImage = document.getElementById('focusImage');
+
+  // FILTER
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const filter = btn.dataset.filter;
+
       items.forEach(item => {
-        if (item.dataset.category !== 'objects') item.classList.add('is-hidden');
-      });
-
-      // Фильтрация
-      filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          filterButtons.forEach(b => b.classList.remove('active'));
-          button.classList.add('active');
-          const filter = button.dataset.filter;
-
-          items.forEach(item => {
-            if (item.dataset.category === filter) {
-              item.classList.remove('is-hidden');
-            } else {
-              item.classList.add('is-hidden');
-            }
-          });
-        });
-      });
-
-      // Lightbox
-      document.querySelector('.gallery').addEventListener('click', e => {
-        if (e.target.tagName === 'IMG') {
-          focusImage.src = e.target.src;
-          overlay.classList.add('active');
+        if (item.dataset.category === filter) {
+          item.classList.remove('is-hidden');
+        } else {
+          item.classList.add('is-hidden');
         }
       });
-
-      overlay.addEventListener('click', () => {
-        overlay.classList.remove('active');
-        focusImage.src = '';
-      });
     });
-  </script>
+  });
+
+  // LIGHTBOX
+  document.querySelector('.gallery').addEventListener('click', e => {
+    if (e.target.tagName === 'IMG') {
+      focusImage.src = e.target.src;
+      overlay.classList.add('active');
+    }
+  });
+
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    focusImage.src = '';
+  });
+
+});
+</script>
 
 </body>
 </html>
