@@ -132,16 +132,36 @@ body {
   max-height: 80vh;
 }
 
-/* CONTACT */
+/* ===== CONTACT ===== */
+
 .contact {
-  padding: 60px;
-  text-align: center;
+  padding: 80px 40px;
   border-top: 1px solid #FFBC00;
+  text-align: center;
+}
+
+.contact-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-name {
+  letter-spacing: 0.25em;
+  font-size: 14px;
+  margin-bottom: 24px;
 }
 
 .contact a {
   color: #FFBC00;
   text-decoration: none;
+  font-size: 14px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.contact a:hover {
+  border-bottom: 1px solid #FFBC00;
 }
 
 /* ANIMATION */
@@ -155,4 +175,5 @@ body {
     transform: translateY(0);
   }
 }
+
 
