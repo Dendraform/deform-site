@@ -184,6 +184,38 @@ body {
 .item.project:visited {
   color: #FFBC00;
 }
+/* PROJECT CARD */
+.item.project {
+  position: relative;
+  display: block;
+}
+
+/* IMAGE */
+.item.project img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* TITLE OVER IMAGE */
+.project-title {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #FFBC00;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* SHOW TITLE ON HOVER */
+.item.project:hover .project-title {
+  opacity: 1;
+}
+
+
 
 
 
