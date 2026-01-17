@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Object 01 — DEFORM</title>
+  <title>Object 01 - DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -10,22 +10,43 @@
 
 <header class="hero">
   <div class="logo-mark"></div>
-  <h1>DEFORM</h1>
-  <p>Interior objects as sculptural form</p>
+  <h1>Object 01</h1>
 </header>
 
-<section class="project-content">
-  <h2>Object 01</h2>
-  <p>Описание проекта Object 01.</p>
-
-  <div class="project-gallery">
-    <img src="images/object-01.jpg" alt="Object 01">
-  </div>
+<section class="project-gallery">
+  <div class="item"><img src="images/object-01-1.jpg" alt=""></div>
+  <div class="item"><img src="images/object-01-2.jpg" alt=""></div>
+  <div class="item"><img src="images/object-01-3.jpg" alt=""></div>
 </section>
 
-<p style="text-align:center; margin-top:40px;">
-  <a href="index.html" class="back-link">← Вернуться к галерее</a>
-</p>
+<!-- LIGHTBOX -->
+<div class="focus-overlay" id="focusOverlay">
+  <div class="focus-content">
+    <img id="focusImage" src="" alt="">
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.project-gallery .item img');
+  const overlay = document.getElementById('focusOverlay');
+  const focusImage = document.getElementById('focusImage');
+
+  items.forEach(img => {
+    img.addEventListener('click', () => {
+      focusImage.src = img.src;
+      overlay.classList.add('active');
+    });
+  });
+
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    focusImage.src = '';
+  });
+});
+</script>
 
 </body>
 </html>
+
+
