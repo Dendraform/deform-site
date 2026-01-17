@@ -2,63 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Object 01 – Deform</title>
+  <title>Object 02 - DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HERO / PROJECT TITLE -->
-  <header class="hero">
-    <h1>Object 01</h1>
-    <p>Interior objects as sculptural form</p>
-  </header>
+<header class="hero">
+  <div class="logo-mark"></div>
+  <h1>Object 02</h1>
+</header>
 
-  <!-- PROJECT GALLERY -->
-  <section class="gallery">
-    <div class="item">
-      <img src="images/object-01-01.jpg" alt="Object 02 - 01">
-    </div>
-    <div class="item">
-      <img src="images/object-01-02.jpg" alt="Object 02 - 02">
-    </div>
-    <div class="item">
-      <img src="images/object-01-03.jpg" alt="Object 02 - 03">
-    </div>
-  </section>
+<section class="project-view">
+  <img src="images/object-02.jpg" alt="Object 02">
+</section>
 
-  <!-- LIGHTBOX / FOCUS MODE -->
-  <div class="focus-overlay" id="focusOverlay">
-    <div class="focus-content">
-      <img src="" alt="Deform object" id="focusImage">
-    </div>
+<section class="project-back">
+  <a href="index.html">← Back to Gallery</a>
+</section>
+
+<section class="contact">
+  <div class="contact-inner">
+    <p class="contact-name">DEFORM</p>
+    <p><a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a></p>
+    <p><a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a></p>
   </div>
-
-  <!-- BACK BUTTON -->
-  <section class="contact">
-    <p><a href="index.html">← Back to Objects</a></p>
-  </section>
-
-  <!-- JS: Lightbox -->
-  <script>
-    const items = document.querySelectorAll('.gallery .item img');
-    const overlay = document.getElementById('focusOverlay');
-    const focusImage = document.getElementById('focusImage');
-
-    items.forEach(img => {
-      img.addEventListener('click', () => {
-        focusImage.src = img.src;
-        overlay.classList.add('active');
-      });
-    });
-
-    overlay.addEventListener('click', () => {
-      overlay.classList.remove('active');
-      focusImage.src = '';
-    });
-  </script>
+</section>
 
 </body>
 </html>
-
-
