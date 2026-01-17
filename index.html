@@ -25,31 +25,41 @@
 <!-- GALLERY (только превью, фильтруется) -->
 <section class="gallery">
 
+<section class="gallery">
+
   <!-- OBJECTS -->
-  <div class="item" data-category="objects">
-    <img src="images/object-01.jpg" alt="Object 01">
-  </div>
-  <div class="item" data-category="objects">
-    <img src="images/object-02.jpg" alt="Object 02">
-  </div>
+  <a href="project-object-01.html"
+     class="item project"
+     data-category="objects">
+    <img src="images/object-01.jpg" alt="">
+    <span class="project-title">Object 01</span>
+  </a>
+
+  <a href="project-object-02.html"
+     class="item project"
+     data-category="objects">
+    <img src="images/object-02.jpg" alt="">
+    <span class="project-title">Object 02</span>
+  </a>
 
   <!-- PAINTINGS -->
-  <div class="item is-hidden" data-category="paintings">
-    <img src="images/painting-01.jpg" alt="Painting 01">
-  </div>
-  <div class="item is-hidden" data-category="paintings">
-    <img src="images/painting-02.jpg" alt="Painting 02">
-  </div>
+  <a href="project-painting-01.html"
+     class="item project is-hidden"
+     data-category="paintings">
+    <img src="images/painting-01.jpg" alt="">
+    <span class="project-title">Painting 01</span>
+  </a>
 
   <!-- ILLUSTRATIONS -->
-  <div class="item is-hidden" data-category="illustrations">
-    <img src="images/illustration-01.jpg" alt="Illustration 01">
-  </div>
-  <div class="item is-hidden" data-category="illustrations">
-    <img src="images/illustration-02.jpg" alt="Illustration 02">
-  </div>
+  <a href="project-illustration-01.html"
+     class="item project is-hidden"
+     data-category="illustrations">
+    <img src="images/illustration-01.jpg" alt="">
+    <span class="project-title">Illustration 01</span>
+  </a>
 
 </section>
+
 
 <!-- LIGHTBOX -->
 <div class="focus-overlay" id="focusOverlay">
@@ -111,5 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
