@@ -30,90 +30,48 @@
     <img src="images/object-01.jpg" alt="Object 01">
     <span class="project-title">Object 01</span>
   </a>
+
   <a href="project-object-02.html" class="item project" data-category="objects">
     <img src="images/object-02.jpg" alt="Object 02">
     <span class="project-title">Object 02</span>
   </a>
 
+  <a href="project-object-03.html" class="item project" data-category="objects">
+    <img src="images/object-03.jpg" alt="Object 03">
+    <span class="project-title">Object 03</span>
+  </a>
+
+  <a href="project-object-04.html" class="item project" data-category="objects">
+    <img src="images/object-04.jpg" alt="Object 04">
+    <span class="project-title">Object 04</span>
+  </a>
+
   <!-- PAINTINGS -->
-  <div class="item is-hidden" data-category="paintings">
+  <a href="project-painting-01.html" class="item project is-hidden" data-category="paintings">
     <img src="images/painting-01.jpg" alt="Painting 01">
-  </div>
-  <div class="item is-hidden" data-category="paintings">
+    <span class="project-title">Painting 01</span>
+  </a>
+
+  <a href="project-painting-02.html" class="item project is-hidden" data-category="paintings">
     <img src="images/painting-02.jpg" alt="Painting 02">
-  </div>
+    <span class="project-title">Painting 02</span>
+  </a>
 
   <!-- ILLUSTRATIONS -->
-  <div class="item is-hidden" data-category="illustrations">
+  <a href="project-illustration-01.html" class="item project is-hidden" data-category="illustrations">
     <img src="images/illustration-01.jpg" alt="Illustration 01">
-  </div>
-  <div class="item is-hidden" data-category="illustrations">
+    <span class="project-title">Illustration 01</span>
+  </a>
+
+  <a href="project-illustration-02.html" class="item project is-hidden" data-category="illustrations">
     <img src="images/illustration-02.jpg" alt="Illustration 02">
-  </div>
+    <span class="project-title">Illustration 02</span>
+  </a>
 
 </section>
-
-<!-- LIGHTBOX -->
-<div class="focus-overlay" id="focusOverlay">
-  <div class="focus-content">
-    <img id="focusImage" src="" alt="">
-  </div>
-</div>
 
 <!-- CONTACT -->
 <section class="contact">
   <div class="contact-inner">
     <p class="contact-name">DEFORM</p>
-    <p><a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a></p>
-    <p><a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a></p>
-  </div>
-</section>
-
-<script>
-// Ждём загрузки DOM
-document.addEventListener('DOMContentLoaded', () => {
-
-  const buttons = document.querySelectorAll('.gallery-filter button');
-  const items = document.querySelectorAll('.gallery .item');
-  const overlay = document.getElementById('focusOverlay');
-  const focusImage = document.getElementById('focusImage');
-
-  // Фильтрация по категориям
-  buttons.forEach(button => {
-    button.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      button.classList.add('active');
-
-      const filter = button.dataset.filter;
-
-      items.forEach(item => {
-        if (filter === 'all' || item.dataset.category === filter) {
-          item.classList.remove('is-hidden');
-        } else {
-          item.classList.add('is-hidden');
-        }
-      });
-    });
-  });
-
-  // Lightbox для Paintings и Illustrations
-  items.forEach(item => {
-    // Только не ссылки на проекты (Objects)
-    if (!item.classList.contains('project')) {
-      item.addEventListener('click', () => {
-        focusImage.src = item.querySelector('img').src;
-        overlay.classList.add('active');
-      });
-    }
-  });
-
-  overlay.addEventListener('click', () => {
-    overlay.classList.remove('active');
-    focusImage.src = '';
-  });
-
-});
-</script>
-
-</body>
-</html>
+    <p><a href="mailto:ilua26@yandex.ru">ilu
