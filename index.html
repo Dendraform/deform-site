@@ -94,16 +94,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.getElementById('focusOverlay');
   const focusImage = document.getElementById('focusImage');
 
-  // FILTER
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.gallery-filter button');
+  const items = document.querySelectorAll('.gallery .item');
 
-      const filter = btn.dataset.filter;
+  // FILTER
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      button.classList.add('active');
+
+      const filter = button.dataset.filter;
 
       items.forEach(item => {
-        if (item.dataset.category === filter) {
+        const category = item.dataset.category;
+
+        if (filter === 'all' || category === filter) {
           item.classList.remove('is-hidden');
         } else {
           item.classList.add('is-hidden');
@@ -111,24 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
-
-  // LIGHTBOX
-  document.querySelector('.gallery').addEventListener('click', e => {
-    if (e.target.tagName === 'IMG') {
-      focusImage.src = e.target.src;
-      overlay.classList.add('active');
-    }
-  });
-
-  overlay.addEventListener('click', () => {
-    overlay.classList.remove('active');
-    focusImage.src = '';
-  });
-
 });
 </script>
 
 </body>
 </html>
+
 
 
