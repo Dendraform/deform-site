@@ -86,18 +86,13 @@
   </div>
 </section>
 
-<script>
+ <script>
 document.addEventListener('DOMContentLoaded', () => {
 
   const buttons = document.querySelectorAll('.gallery-filter button');
   const items = document.querySelectorAll('.gallery .item');
   const overlay = document.getElementById('focusOverlay');
   const focusImage = document.getElementById('focusImage');
-
- <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const buttons = document.querySelectorAll('.gallery-filter button');
-  const items = document.querySelectorAll('.gallery .item');
 
   // FILTER
   buttons.forEach(button => {
@@ -110,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
       items.forEach(item => {
         const category = item.dataset.category;
 
-        if (filter === 'all' || category === filter) {
+        if (category === filter) {
           item.classList.remove('is-hidden');
         } else {
           item.classList.add('is-hidden');
@@ -118,11 +113,26 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+  // LIGHTBOX (только для НЕ ссылок-проектов)
+  document.querySelector('.gallery').addEventListener('click', e => {
+    if (e.target.tagName === 'IMG' && !e.target.closest('a')) {
+      focusImage.src = e.target.src;
+      overlay.classList.add('active');
+    }
+  });
+
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    focusImage.src = '';
+  });
+
 });
 </script>
 
 </body>
 </html>
+
 
 
 
