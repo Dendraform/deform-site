@@ -92,15 +92,14 @@
   </div>
 </section>
 
- <script>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
-
   const buttons = document.querySelectorAll('.gallery-filter button');
   const items = document.querySelectorAll('.gallery .item');
   const overlay = document.getElementById('focusOverlay');
   const focusImage = document.getElementById('focusImage');
 
-  // FILTER
+  // Обработка фильтра
   buttons.forEach(button => {
     button.addEventListener('click', () => {
       buttons.forEach(b => b.classList.remove('active'));
@@ -111,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
       items.forEach(item => {
         const category = item.dataset.category;
 
-        if (category === filter) {
+        if (filter === 'all' || category === filter) {
           item.classList.remove('is-hidden');
         } else {
           item.classList.add('is-hidden');
@@ -120,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // LIGHTBOX (только для НЕ ссылок-проектов)
+  // Lightbox (если есть изображения, которые открываются)
   document.querySelector('.gallery').addEventListener('click', e => {
     if (e.target.tagName === 'IMG' && !e.target.closest('a')) {
       focusImage.src = e.target.src;
@@ -132,12 +131,13 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.classList.remove('active');
     focusImage.src = '';
   });
-
 });
 </script>
 
+
 </body>
 </html>
+
 
 
 
