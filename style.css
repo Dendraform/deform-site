@@ -244,4 +244,27 @@ body {
   border: 1px solid #FFBC00;
   background: #21242B;
 }
+/* BACK BUTTON — PROJECT PAGE */
+.project-back-container {
+  text-align: center;      /* по центру */
+  margin: 32px 0;          /* расстояние над галереей */
+}
+
+.back-link {
+  display: inline-block;
+  background: #FFBC00;     /* жёлтая плашка */
+  color: #16181E;          /* тёмный текст внутри */
+  padding: 10px 20px;
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.back-link:hover {
+  background: #e0a800;     /* чуть темнее при наведении */
+}
+
 
