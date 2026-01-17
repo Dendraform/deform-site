@@ -2,6 +2,70 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <title>Object 01 | DEFORM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- HERO PROJECT -->
+<header class="hero">
+  <div class="logo-mark"></div>
+  <h1>Object 01</h1>
+  <p>Interior object details and gallery</p>
+</header>
+
+<!-- PROJECT GALLERY -->
+<section class="project-gallery">
+  <div class="item"><img src="images/object-01.jpg" alt="Object 01"></div>
+  <div class="item"><img src="images/object-01-detail-1.jpg" alt="Detail 1"></div>
+  <div class="item"><img src="images/object-01-detail-2.jpg" alt="Detail 2"></div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="focus-overlay" id="focusOverlay">
+  <div class="focus-content">
+    <img id="focusImage" src="" alt="">
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="contact-inner">
+    <p class="contact-name">DEFORM</p>
+    <p><a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a></p>
+    <p><a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a></p>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const items = document.querySelectorAll('.project-gallery .item img');
+  const overlay = document.getElementById('focusOverlay');
+  const focusImage = document.getElementById('focusImage');
+
+  // Делегирование для клика на изображения проекта
+  items.forEach(img => {
+    img.addEventListener('click', () => {
+      focusImage.src = img.src;
+      overlay.classList.add('active');
+    });
+  });
+
+  // Закрытие Lightbox
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    focusImage.src = '';
+  });
+});
+</script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <title>Object 01 - DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
@@ -48,5 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </body>
 </html>
+
 
 
