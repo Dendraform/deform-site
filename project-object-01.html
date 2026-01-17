@@ -2,66 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Object 01 – Deform</title>
+  <title>Object 01 – DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HERO / PROJECT TITLE -->
-  <header class="hero">
-    <h1>Object 01</h1>
-    <p>Interior objects as sculptural form</p>
-  </header>
+<!-- HERO / Название проекта -->
+<header class="hero">
+  <h1>Object 01</h1>
+  <p>Interior objects as sculptural form</p>
+</header>
 
-  <!-- PROJECT GALLERY -->
-  <section class="gallery">
-    <div class="item">
-      <img src="images/object-01-01.jpg" alt="Object 01 - 01">
-    </div>
-    <div class="item">
-      <img src="images/object-01-02.jpg" alt="Object 01 - 02">
-    </div>
-    <div class="item">
-      <img src="images/object-01-03.jpg" alt="Object 01 - 03">
-    </div>
-    <div class="item">
-      <img src="images/object-01-04.jpg" alt="Object 01 - 04">
-    </div>
-  </section>
-
-  <!-- LIGHTBOX / FOCUS MODE -->
-  <div class="focus-overlay" id="focusOverlay">
-    <div class="focus-content">
-      <img src="" alt="Deform object" id="focusImage">
-    </div>
+<!-- PROJECT GALLERY -->
+<section class="project-gallery">
+  <div class="project-item">
+    <img src="images/object-01-1.jpg" alt="Object 01 photo 1">
   </div>
+  <div class="project-item">
+    <img src="images/object-01-2.jpg" alt="Object 01 photo 2">
+  </div>
+  <div class="project-item">
+    <img src="images/object-01-3.jpg" alt="Object 01 photo 3">
+  </div>
+</section>
 
-  <!-- BACK BUTTON -->
-  <section class="contact">
-    <p><a href="index.html">← Back to Objects</a></p>
-  </section>
+<!-- BACK LINK -->
+<section class="back-link">
+  <a href="index.html">&larr; Back to gallery</a>
+</section>
 
-  <!-- JS: Lightbox -->
-  <script>
-    const items = document.querySelectorAll('.gallery .item img');
-    const overlay = document.getElementById('focusOverlay');
-    const focusImage = document.getElementById('focusImage');
+<script>
+  // Lightbox для фотографий проекта
+  const galleryItems = document.querySelectorAll('.project-gallery img');
+  const overlay = document.createElement('div');
+  overlay.className = 'focus-overlay';
+  overlay.innerHTML = `<div class="focus-content"><img id="focusImage" src="" alt=""></div>`;
+  document.body.appendChild(overlay);
 
-    items.forEach(img => {
-      img.addEventListener('click', () => {
-        focusImage.src = img.src;
-        overlay.classList.add('active');
-      });
+  const focusImage = document.getElementById('focusImage');
+
+  galleryItems.forEach(img => {
+    img.addEventListener('click', () => {
+      focusImage.src = img.src;
+      overlay.classList.add('active');
     });
+  });
 
-    overlay.addEventListener('click', () => {
-      overlay.classList.remove('active');
-      focusImage.src = '';
-    });
-  </script>
+  overlay.addEventListener('click', () => {
+    overlay.classList.remove('active');
+    focusImage.src = '';
+  });
+</script>
 
 </body>
 </html>
-
-
