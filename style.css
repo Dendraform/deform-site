@@ -236,3 +236,12 @@ body {
     padding: 20px;
   }
 }
+/* PROJECT GALLERY — IMAGES ONLY (SAFE FIX) */
+.project-gallery img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid #FFBC00;
+  background: #21242B;
+}
+
