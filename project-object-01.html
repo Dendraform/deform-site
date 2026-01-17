@@ -2,42 +2,102 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Object 01 | DEFORM</title>
+  <title>DEFORM – Object 01</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* GALERY PROJECT */
+    .project-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      padding: 40px;
+    }
+
+    .project-gallery .item {
+      background: #21242B;
+      border: 1px solid #FFBC00;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      min-height: 150px;
+    }
+
+    .project-gallery .item img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .project-gallery .item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* LIGHTBOX */
+    .focus-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(22,24,30,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    .focus-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .focus-content {
+      background: #21242B;
+      border: 1px solid #FFBC00;
+      padding: 16px;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .focus-content img {
+      max-width: 100%;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+
+    /* PROJECT TITLE */
+    .project-title-page {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 24px;
+      letter-spacing: 0.05em;
+      color: #FFBC00;
+    }
+
+  </style>
 </head>
 <body>
 
-<!-- HERO PROJECT -->
 <header class="hero">
   <div class="logo-mark"></div>
-  <h1>Object 01</h1>
-  <p>Interior object details and gallery</p>
+  <h1>DEFORM</h1>
+  <p>Interior objects as sculptural form</p>
 </header>
 
+<h2 class="project-title-page">Object 01</h2>
+
 <!-- PROJECT GALLERY -->
-<section class="project-gallery">
-  <div class="item"><img src="images/object-01.jpg" alt="Object 01"></div>
-  <div class="item"><img src="images/object-01-detail-1.jpg" alt="Detail 1"></div>
-  <div class="item"><img src="images/object-01-detail-2.jpg" alt="Detail 2"></div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="focus-overlay" id="focusOverlay">
-  <div class="focus-content">
-    <img id="focusImage" src="" alt="">
-  </div>
-</div>
-
-<!-- CONTACT -->
-<section class="contact">
-  <div class="contact-inner">
-    <p class="contact-name">DEFORM</p>
-    <p><a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a></p>
-    <p><a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a></p>
-  </div>
-</section>
-
 <section class="project-gallery">
   <div class="item"><img src="images/object-01-01.jpg" alt="Object 01-01"></div>
   <div class="item"><img src="images/object-01-02.jpg" alt="Object 01-02"></div>
@@ -55,12 +115,21 @@
   <div class="item"><img src="images/object-01-14.jpg" alt="Object 01-14"></div>
 </section>
 
-<!-- Lightbox -->
+<!-- LIGHTBOX -->
 <div class="focus-overlay" id="focusOverlay">
   <div class="focus-content">
     <img id="focusImage" src="" alt="">
   </div>
 </div>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="contact-inner">
+    <p class="contact-name">DEFORM</p>
+    <p><a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a></p>
+    <p><a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a></p>
+  </div>
+</section>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -82,11 +151,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
-
 </body>
 </html>
-
-
-
-
-
