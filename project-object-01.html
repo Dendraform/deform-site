@@ -38,51 +38,24 @@
   </div>
 </section>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.project-gallery .item img');
-  const overlay = document.getElementById('focusOverlay');
-  const focusImage = document.getElementById('focusImage');
-
-  // Делегирование для клика на изображения проекта
-  items.forEach(img => {
-    img.addEventListener('click', () => {
-      focusImage.src = img.src;
-      overlay.classList.add('active');
-    });
-  });
-
-  // Закрытие Lightbox
-  overlay.addEventListener('click', () => {
-    overlay.classList.remove('active');
-    focusImage.src = '';
-  });
-});
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Object 01 - DEFORM</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<header class="hero">
-  <div class="logo-mark"></div>
-  <h1>Object 01</h1>
-</header>
-
 <section class="project-gallery">
-  <div class="item"><img src="images/object-01.jpg" alt="Object 01"></div>
-  <div class="item"><img src="images/object-01-detail-1.jpg" alt="Detail 1"></div>
-  <div class="item"><img src="images/object-01-detail-2.jpg" alt="Detail 2"></div>
+  <div class="item"><img src="images/object-01-01.jpg" alt="Object 01-01"></div>
+  <div class="item"><img src="images/object-01-02.jpg" alt="Object 01-02"></div>
+  <div class="item"><img src="images/object-01-03.jpg" alt="Object 01-03"></div>
+  <div class="item"><img src="images/object-01-04.jpg" alt="Object 01-04"></div>
+  <div class="item"><img src="images/object-01-05.jpg" alt="Object 01-05"></div>
+  <div class="item"><img src="images/object-01-06.jpg" alt="Object 01-06"></div>
+  <div class="item"><img src="images/object-01-07.jpg" alt="Object 01-07"></div>
+  <div class="item"><img src="images/object-01-08.jpg" alt="Object 01-08"></div>
+  <div class="item"><img src="images/object-01-09.jpg" alt="Object 01-09"></div>
+  <div class="item"><img src="images/object-01-10.jpg" alt="Object 01-10"></div>
+  <div class="item"><img src="images/object-01-11.jpg" alt="Object 01-11"></div>
+  <div class="item"><img src="images/object-01-12.jpg" alt="Object 01-12"></div>
+  <div class="item"><img src="images/object-01-13.jpg" alt="Object 01-13"></div>
+  <div class="item"><img src="images/object-01-14.jpg" alt="Object 01-14"></div>
 </section>
 
+<!-- Lightbox -->
 <div class="focus-overlay" id="focusOverlay">
   <div class="focus-content">
     <img id="focusImage" src="" alt="">
@@ -109,8 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+
 </body>
 </html>
+
 
 
 
