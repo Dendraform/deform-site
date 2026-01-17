@@ -87,6 +87,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   animation: fadeUp 0.5s ease forwards;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -100,6 +101,28 @@ body {
 
 .item.is-hidden {
   display: none;
+}
+
+/* PROJECTS (Objects) */
+.item.project {
+  display: block;
+  color: #FFBC00;
+  text-decoration: none;
+}
+
+.project-title {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: #FFBC00;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.item.project:hover .project-title {
+  opacity: 1;
 }
 
 /* LIGHTBOX */
@@ -132,8 +155,7 @@ body {
   max-height: 80vh;
 }
 
-/* ===== CONTACT ===== */
-
+/* CONTACT */
 .contact {
   padding: 80px 40px;
   border-top: 1px solid #FFBC00;
@@ -149,73 +171,10 @@ body {
 .contact-name {
   letter-spacing: 0.25em;
   font-size: 14px;
-  margin-bottom: 24px;
-}
-
-.contact a {
-  color: #FFBC00;
-  text-decoration: none;
-  font-size: 14px;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-.contact a:hover {
-  border-bottom: 1px solid #FFBC00;
 }
 
 /* ANIMATION */
 @keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-/* LINKS RESET FOR PROJECTS */
-.item.project {
-  color: #FFBC00;
-  text-decoration: none;
-}
-
-.item.project:visited {
-  color: #FFBC00;
-}
-/* PROJECT CARD */
-.item.project {
-  position: relative;
-  display: block;
-}
-
-/* IMAGE */
-.item.project img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* TITLE OVER IMAGE */
-.project-title {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  font-size: 14px;
-  letter-spacing: 0.05em;
-  color: #FFBC00;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-/* SHOW TITLE ON HOVER */
-.item.project:hover .project-title {
-  opacity: 1;
-}
-
-
-
-
-
