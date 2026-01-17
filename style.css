@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -10,7 +11,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero {
   height: 100vh;
   display: flex;
@@ -18,11 +19,13 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 0 20px;
 }
 
 .hero h1 {
   font-size: 64px;
   letter-spacing: 0.25em;
+  margin-bottom: 12px;
 }
 
 .hero p {
@@ -30,7 +33,7 @@ body {
   font-size: 14px;
 }
 
-/* LOGO */
+/* ===== LOGO ===== */
 .logo-mark {
   width: 56px;
   height: 56px;
@@ -51,7 +54,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-/* FILTER */
+/* ===== FILTER BUTTONS ===== */
 .gallery-filter {
   display: flex;
   justify-content: center;
@@ -66,13 +69,14 @@ body {
   font-size: 14px;
   cursor: pointer;
   border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
 .gallery-filter button.active {
   border-bottom: 1px solid #FFBC00;
 }
 
-/* GALLERY */
+/* ===== GALLERY ===== */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -88,28 +92,23 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
+  cursor: pointer;
   animation: fadeUp 0.5s ease forwards;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .item img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .item.is-hidden {
   display: none;
 }
 
-/* PROJECTS (Objects) */
-.item.project {
-  display: block;
-  color: #FFBC00;
-  text-decoration: none;
-}
-
+/* TITLE OVER IMAGE (PROJECTS) */
 .project-title {
   position: absolute;
   bottom: 12px;
@@ -125,7 +124,28 @@ body {
   opacity: 1;
 }
 
-/* LIGHTBOX */
+/* ===== PROJECT GALLERY (PROJECT PAGES) ===== */
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+  padding: 40px;
+}
+
+.project-gallery .item {
+  min-height: 200px;
+  border: 1px solid #FFBC00;
+  overflow: hidden;
+}
+
+.project-gallery .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* ===== LIGHTBOX ===== */
 .focus-overlay {
   position: fixed;
   inset: 0;
@@ -148,14 +168,17 @@ body {
   background: #21242B;
   border: 1px solid #FFBC00;
   padding: 16px;
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .focus-content img {
-  max-width: 80vw;
+  max-width: 100%;
   max-height: 80vh;
+  display: block;
 }
 
-/* CONTACT */
+/* ===== CONTACT ===== */
 .contact {
   padding: 80px 40px;
   border-top: 1px solid #FFBC00;
@@ -173,59 +196,43 @@ body {
   font-size: 14px;
 }
 
-/* ANIMATION */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-/* ===== PROJECT PAGE ===== */
-.project-content {
-  max-width: 900px;
-  margin: 80px auto;
-  padding: 0 20px;
-  color: #FFBC00;
-  text-align: center;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.project-content h2 {
-  font-size: 36px;
-  letter-spacing: 0.1em;
-  margin-bottom: 24px;
-  text-transform: uppercase;
-}
-
-.project-content p {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 40px;
-}
-
-.project-gallery {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
-}
-
-.project-gallery img {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #FFBC00;
-  border-radius: 4px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.4);
-}
-
-/* Ссылка назад */
-.back-link {
+.contact a {
   color: #FFBC00;
   text-decoration: none;
+  font-size: 14px;
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease;
 }
 
-.back-link:hover {
+.contact a:hover {
   border-bottom: 1px solid #FFBC00;
 }
 
+/* ===== ANIMATIONS ===== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+  }
+
+  .project-gallery {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
