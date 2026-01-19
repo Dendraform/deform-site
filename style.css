@@ -291,6 +291,26 @@ body {
   border-bottom: 1px solid #FFBC00;
 }
 
+/* ===== PROJECT GALLERY: SQUARE THUMBNAILS ===== */
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 40px;
+}
+
+.project-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;     /* квадрат */
+  object-fit: cover;      /* аккуратная обрезка */
+  cursor: pointer;
+  background: #21242B;
+  border: 1px solid #FFBC00;
+}
+
+
+
 
 
 
