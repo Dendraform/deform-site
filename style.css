@@ -217,24 +217,25 @@ body {
 }
 /* BACK BUTTON — PROJECT PAGE */
 .project-back-container {
-  text-align: center;          /* центрируем кнопку */
-  margin: 16px 0;              /* небольшой отступ сверху и снизу */
+  text-align: center;       /* центрируем кнопку */
+  margin: 20px 0;           /* отступ сверху и снизу */
 }
 
 .back-link {
-  display: inline-block;       /* чтобы задать размеры и padding */
-  background-color: #FFBC00;  /* желтая плашка */
-  color: #16181E;              /* цвет текста, темный для контраста */
-  padding: 8px 16px;           /* внутренние отступы */
-  border-radius: 6px;          /* закругление углов */
-  text-decoration: none;       /* убираем подчеркивание */
+  display: inline-block;
+  background-color: #FFBC00; /* желтая плашка */
+  color: #16181E;
+  padding: 10px 20px;
+  text-decoration: none;
   font-weight: bold;
+  border-radius: 4px;
   transition: background 0.3s ease;
 }
 
 .back-link:hover {
-  background-color: #e0a900;   /* затемнение при наведении */
+  background-color: #e0a800;
 }
+
 
 /* ===== LIGHTBOX (PROJECT PAGES ONLY) ===== */
 .lightbox {
@@ -385,6 +386,7 @@ body {
 .project-gallery img:hover {
   transform: scale(1.05);
 }
+
 
 
 
