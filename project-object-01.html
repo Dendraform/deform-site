@@ -2,19 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Object 01 – DEFORM</title>
+  <title>Object 01 - DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Lightbox кнопки */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(22,24,30,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1000;
+      transition: opacity 0.3s ease;
+      flex-direction: column;
+    }
+    .lightbox.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80vh;
+    }
+    .lightbox button {
+      position: absolute;
+      background: #FFBC00;
+      border: none;
+      color: #16181E;
+      font-size: 24px;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 4px;
+      user-select: none;
+    }
+    .lightbox-close { top: 20px; right: 20px; }
+    .lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+    .lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
+  </style>
 </head>
-
 <body>
 
-<!-- BACK BUTTON -->
+<!-- Back button -->
 <div class="project-back-container">
   <a href="index.html" class="back-link">← Back to Gallery</a>
 </div>
 
-<!-- PROJECT GALLERY -->
+<!-- HEADER -->
+<header class="hero">
+  <div class="logo-mark"></div>
+  <h1>Object 01</h1>
+  <p>Description of this project goes here…</p>
+</header>
+
+<!-- GALLERY -->
 <section class="project-gallery">
   <img src="images/object-01-01.jpg" alt="">
   <img src="images/object-01-02.jpg" alt="">
@@ -25,7 +69,7 @@
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
-  <button class="lightbox-close">×</button>
+  <button class="lightbox-close">✕</button>
   <button class="lightbox-prev">‹</button>
   <img id="lightboxImage" src="" alt="">
   <button class="lightbox-next">›</button>
@@ -40,11 +84,15 @@
   </div>
 </section>
 
+<!-- JS: Lightbox -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const images = Array.from(document.querySelectorAll('.project-gallery img'));
   const lightbox = document.getElementById('lightbox');
   const lightboxImage = document.getElementById('lightboxImage');
+  const btnNext = document.querySelector('.lightbox-next');
+  const btnPrev = document.querySelector('.lightbox-prev');
+  const btnClose = document.querySelector('.lightbox-close');
 
   let currentIndex = 0;
 
@@ -58,55 +106,49 @@ document.addEventListener('DOMContentLoaded', () => {
     lightbox.classList.remove('active');
   }
 
- function prevImage() {
-  currentIndex =
-    (currentIndex - 1 + images.length) % images.length;
-  lightboxImage.src = images[currentIndex].src;
-}
-  document.querySelector('.lightbox-close')
-  .addEventListener('click', closeLightbox);
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImage.src = images[currentIndex].src;
+  }
 
-document.querySelector('.lightbox-next')
-  .addEventListener('click', e => {
-    e.stopPropagation();
-    nextImage();
-  });
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImage.src = images[currentIndex].src;
+  }
 
-document.querySelector('.lightbox-prev')
-  .addEventListener('click', e => {
-    e.stopPropagation();
-    prevImage();
-  });
-
+  // Клик по миниатюрам
   images.forEach((img, index) => {
     img.addEventListener('click', () => openLightbox(index));
   });
 
-  lightbox.addEventListener('click', nextImage);
+  // Кнопки
+  btnNext.addEventListener('click', e => { e.stopPropagation(); nextImage(); });
+  btnPrev.addEventListener('click', e => { e.stopPropagation(); prevImage(); });
+  btnClose.addEventListener('click', closeLightbox);
 
+  // Клик по overlay закрывает lightbox
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Клавиши
   document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
     if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
   });
 
-  // Swipe
+  // Свайп для мобильных
   let startX = 0;
-
-  lightbox.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-  });
-
+  lightbox.addEventListener('touchstart', e => startX = e.touches[0].clientX);
   lightbox.addEventListener('touchend', e => {
     const endX = e.changedTouches[0].clientX;
     if (startX - endX > 50) nextImage();
-    if (endX - startX > 50) {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImage.src = images[currentIndex].src;
-    }
+    if (endX - startX > 50) prevImage();
   });
 });
 </script>
 
 </body>
 </html>
-
-
