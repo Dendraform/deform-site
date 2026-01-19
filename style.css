@@ -308,6 +308,64 @@ body {
   background: #21242B;
   border: 1px solid #FFBC00;
 }
+/* ===== LIGHTBOX CONTROLS ===== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(22,24,30,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: 1px solid #FFBC00;
+  color: #FFBC00;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 8px 14px;
+}
+
+.lightbox-close {
+  top: 24px;
+  right: 24px;
+}
+
+.lightbox-prev {
+  left: 24px;
+}
+
+.lightbox-next {
+  right: 24px;
+}
+
+@media (max-width: 768px) {
+  .lightbox-prev,
+  .lightbox-next {
+    display: none; /* на мобильных — свайп */
+  }
+}
+
+
 
 
 
