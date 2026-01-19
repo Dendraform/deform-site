@@ -118,9 +118,63 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="lightbox" id="lightbox">
   <img id="lightboxImage" src="" alt="">
 </div>
+  
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  const images = Array.from(document.querySelectorAll('.project-gallery img'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImage.src = images[currentIndex].src;
+    lightbox.classList.add('active');
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImage.src = images[currentIndex].src;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
+  });
+
+  lightbox.addEventListener('click', nextImage);
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Swipe support
+  let startX = 0;
+
+  lightbox.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+  });
+
+  lightbox.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) nextImage();
+    if (endX - startX > 50) {
+      currentIndex =
+        (currentIndex - 1 + images.length) % images.length;
+      lightboxImage.src = images[currentIndex].src;
+    }
+  });
+});
+</script>
+
 
 </body>
 </html>
+
 
 
 
