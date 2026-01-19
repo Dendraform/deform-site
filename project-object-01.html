@@ -2,72 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Object 01 - DEFORM</title>
+  <title>Object 01 – DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- HEADER / HERO -->
-<header class="hero">
-  <div class="logo-mark"></div>
-  <h1>Object 01</h1>
-  <p>Description of this project goes here…</p>
-</header>
+<!-- BACK BUTTON -->
+<div class="project-back-container">
+  <a href="index.html" class="back-link">← Back to Gallery</a>
+</div>
 
-<!-- GALLERY -->
-<section class="gallery">
-  <!-- Миниатюры фото проекта -->
-  <div class="item">
-    <img src="images/object-01-01.jpg" alt="Object 01 - 1">
-  </div>
-  <div class="item">
-    <img src="images/object-01-02.jpg" alt="Object 01 - 2">
-  </div>
-  <div class="item">
-    <img src="images/object-01-03.jpg" alt="Object 01 - 3">
-  </div>
-  <div class="item">
-    <img src="images/object-01-04.jpg" alt="Object 01 - 4">
-  </div>
-   <div class="item">
-    <img src="images/object-01-05.jpg" alt="Object 01 - 5">
-  </div>
-   <div class="item">
-    <img src="images/object-01-06.jpg" alt="Object 01 - 6">
-  </div>
-   <div class="item">
-    <img src="images/object-01-07.jpg" alt="Object 01 - 7">
-  </div>
-   <div class="item">
-    <img src="images/object-01-08.jpg" alt="Object 01 - 8">
-  </div>
-   <div class="item">
-    <img src="images/object-01-09.jpg" alt="Object 01 - 9">
-  </div>
-   <div class="item">
-    <img src="images/object-01-10.jpg" alt="Object 01 - 10">
-  </div>
-   <div class="item">
-    <img src="images/object-01-11.jpg" alt="Object 01 - 11">
-  </div>
-   <div class="item">
-    <img src="images/object-01-12.jpg" alt="Object 01 - 12">
-  </div>
-   <div class="item">
-    <img src="images/object-01-13.jpg" alt="Object 01 - 13">
-  </div>
-   <div class="item">
-    <img src="images/object-01-14.jpg" alt="Object 01 - 14">
-  </div>
-  <!-- Добавляй столько фото, сколько есть -->
+<!-- PROJECT GALLERY -->
+<section class="project-gallery">
+  <img src="images/object-01-01.jpg" alt="">
+  <img src="images/object-01-02.jpg" alt="">
+  <img src="images/object-01-03.jpg" alt="">
+  <img src="images/object-01-04.jpg" alt="">
+  <img src="images/object-01-05.jpg" alt="">
 </section>
 
-<!-- LIGHTBOX / FOCUS MODE -->
-<div class="focus-overlay" id="focusOverlay">
-  <div class="focus-content">
-    <img id="focusImage" src="" alt="">
-  </div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImage" src="" alt="">
 </div>
 
 <!-- CONTACT -->
@@ -76,50 +34,10 @@
     <p class="contact-name">DEFORM</p>
     <p><a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a></p>
     <p><a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a></p>
-    <!-- <p><a href="tel:+7XXXXXXXXXX">+7 …</a></p> -->
   </div>
 </section>
 
-<!-- JS: Lightbox -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.gallery .item img');
-  const overlay = document.getElementById('focusOverlay');
-  const focusImage = document.getElementById('focusImage');
-
-  items.forEach(img => {
-    img.addEventListener('click', () => {
-      focusImage.src = img.src;
-      overlay.classList.add('active');
-    });
-  });
-
-  overlay.addEventListener('click', () => {
-    overlay.classList.remove('active');
-    focusImage.src = '';
-  });
-});
-</script>
-
-<body>
-
-<!-- Back button -->
-<div class="project-back-container">
-  <a href="index.html" class="back-link">← Back to Gallery</a>
-</div>
-
-<section class="project-gallery">
-  <img src="images/object-01-01.jpg" alt="">
-  <img src="images/object-01-02.jpg" alt="">
-  <img src="images/object-01-03.jpg" alt="">
-</section>
-  
-  <!-- LIGHTBOX OVERLAY -->
-<div class="lightbox" id="lightbox">
-  <img id="lightboxImage" src="" alt="">
-</div>
-  
-  <script>
 document.addEventListener('DOMContentLoaded', () => {
   const images = Array.from(document.querySelectorAll('.project-gallery img'));
   const lightbox = document.getElementById('lightbox');
@@ -152,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') closeLightbox();
   });
 
-  // Swipe support
+  // Swipe
   let startX = 0;
 
   lightbox.addEventListener('touchstart', e => {
@@ -163,19 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const endX = e.changedTouches[0].clientX;
     if (startX - endX > 50) nextImage();
     if (endX - startX > 50) {
-      currentIndex =
-        (currentIndex - 1 + images.length) % images.length;
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
       lightboxImage.src = images[currentIndex].src;
     }
   });
 });
 </script>
 
-
 </body>
 </html>
-
-
-
-
-
