@@ -2,30 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Object 04 — DEFORM</title>
+  <title>Object 04 - DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .project-back-container { text-align: center; margin: 20px 0; }
+    .back-link { display: inline-block; background: #FFBC00; color: #16181E; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.3s ease; }
+    .back-link:hover { background: #e6ac00; }
+
+    .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 20px; }
+    .project-gallery img { width: 100%; aspect-ratio: 1/1; object-fit: cover; cursor: pointer; border: 1px solid #FFBC00; transition: transform 0.3s ease; }
+    .project-gallery img:hover { transform: scale(1.05); }
+
+    .lightbox { position: fixed; inset: 0; background: rgba(22,24,30,0.9); display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; z-index: 1000; transition: opacity 0.3s ease; flex-direction: column; }
+    .lightbox.active { opacity: 1; pointer-events: all; }
+    .lightbox img { max-width: 90%; max-height: 80vh; transition: opacity 0.3s ease; }
+    .lightbox img.fade { opacity: 0; }
+    .lightbox button { position: absolute; background: #FFBC00; border: none; color: #16181E; font-size: 24px; cursor: pointer; padding: 8px 12px; border-radius: 4px; user-select: none; }
+    .lightbox-close { top: 20px; right: 20px; }
+    .lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
+    .lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
+  </style>
 </head>
 <body>
 
 <header class="hero">
   <div class="logo-mark"></div>
-  <h1>DEFORM</h1>
-  <p>Interior objects as sculptural form</p>
+  <h1>Object 04</h1>
+  <p>Description of this project goes here…</p>
 </header>
 
-<section class="project-content">
-  <h2>Object 04</h2>
-  <p>Описание проекта Object 04.</p>
+<div class="project-back-container">
+  <a href="index.html" class="back-link">← Back to Gallery</a>
+</div>
 
-  <div class="project-gallery">
-    <img src="images/object-04.jpg" alt="Object 04">
+<section class="project-gallery">
+  <img src="images/object-04.jpg" alt="">
+</section>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close">✕</button>
+  <button class="lightbox-prev">‹</button>
+  <img id="lightboxImage" src="" alt="">
+  <button class="lightbox-next">›</button>
+</div>
+
+<section class="contact">
+  <div class="contact-inner">
+    <p class="contact-name">DEFORM</p>
+    <p><a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a></p>
+    <p><a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a></p>
   </div>
 </section>
 
-<p style="text-align:center; margin-top:40px;">
-  <a href="index.html" class="back-link">← Вернуться к галерее</a>
-</p>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const images = Array.from(document.querySelectorAll('.project-gallery img'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const btnNext = document.querySelector('.lightbox-next');
+  const btnPrev = document.querySelector('.lightbox-prev');
+  const btnClose = document.querySelector('.lightbox-close');
+
+  let currentIndex = 0;
+
+  function openLightbox(index) { currentIndex = index; lightboxImage.src = images[currentIndex].src; lightbox.classList.add('active'); }
+  function closeLightbox() { lightbox.classList.remove('active'); }
+  function nextImage() { lightboxImage.classList.add('fade'); setTimeout(()=>{ currentIndex=(currentIndex+1)%images.length; lightboxImage.src=images[currentIndex].src; lightboxImage.classList.remove('fade'); },200); }
+  function prevImage() { lightboxImage.classList.add('fade'); setTimeout(()=>{ currentIndex=(currentIndex-1+images.length)%images.length; lightboxImage.src=images[currentIndex].src; lightboxImage.classList.remove('fade'); },200); }
+
+  images.forEach((img,index)=>{ img.addEventListener('click',()=>openLightbox(index)); });
+  btnNext.addEventListener('click',e=>{ e.stopPropagation(); nextImage(); });
+  btnPrev.addEventListener('click',e=>{ e.stopPropagation(); prevImage(); });
+  btnClose.addEventListener('click',closeLightbox);
+  lightbox.addEventListener('click',e=>{ if(e.target===lightbox) closeLightbox(); });
+  document.addEventListener('keydown',e=>{ if(!lightbox.classList.contains('active')) return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') nextImage(); if(e.key==='ArrowLeft') prevImage(); });
+  let startX=0; lightbox.addEventListener('touchstart',e=>startX=e.touches[0].clientX); lightbox.addEventListener('touchend',e=>{ const endX=e.changedTouches[0].clientX; if(startX-endX>50) nextImage(); if(endX-startX>50) prevImage(); });
+});
+</script>
 
 </body>
 </html>
