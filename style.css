@@ -17,21 +17,22 @@ body {
    HERO / HEADER
 ========================= */
 .hero {
-  padding: 80px 20px 40px;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  text-align: center;
+  padding: 80px 20px 40px;
 }
-
 
 /* =========================
    LOGO
 ========================= */
-.logo {
-  width: 230px;
-  margin-bottom: 98px;
+.logo svg {
+  max-width: 420px;
+  width: 100%;
+  height: auto;
 }
+
 
 /* =========================
    FILTER BUTTONS
@@ -258,6 +259,11 @@ body {
   gap: 32px;
   padding: 20px 0 10px;
 }
+header.hero {
+  border-bottom: 1px solid rgba(255, 188, 0, 0.2);
+}
+
+
 
 
 
