@@ -239,4 +239,11 @@ body {
     display: none;
   }
 }
+.logo svg {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+
 
