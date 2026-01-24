@@ -1,4 +1,6 @@
-/* ===== RESET ===== */
+/* =========================
+   RESET
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -11,55 +13,33 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ===== HERO ===== */
+/* =========================
+   HERO / HEADER
+========================= */
 .hero {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  padding-top: 40px;
   text-align: center;
-  padding: 0 20px;
 }
 
-.hero h1 {
-  font-size: 64px;
-  letter-spacing: 0.25em;
-  margin-bottom: 12px;
-}
-
-.hero p {
-  margin-top: 16px;
-  font-size: 14px;
-}
-
-/* ===== LOGO ===== */
-.logo-mark {
-  width: 56px;
-  height: 56px;
-  border: 1px solid #FFBC00;
+/* =========================
+   LOGO
+========================= */
+.logo {
+  width: 80px;
   margin-bottom: 24px;
-  position: relative;
 }
 
-.logo-mark::before {
-  content: "";
-  width: 38px;
-  height: 38px;
-  border: 1px solid #FFBC00;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-/* ===== FILTER BUTTONS ===== */
+/* =========================
+   FILTER BUTTONS
+========================= */
 .gallery-filter {
   display: flex;
-  justify-content: center;
   gap: 32px;
-  padding: 40px 0;
+  margin-bottom: 24px;
 }
 
 .gallery-filter button {
@@ -68,6 +48,7 @@ body {
   color: #FFBC00;
   font-size: 14px;
   cursor: pointer;
+  padding-bottom: 4px;
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease;
 }
@@ -76,18 +57,26 @@ body {
   border-bottom: 1px solid #FFBC00;
 }
 
+/* =========================
+   MAIN GALLERY (HOME)
+========================= */
+.gallery {
+  width: 100%;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
 
+/* GALLERY ITEM */
 .item {
+  position: relative;
   background: #21242B;
   border: 1px solid #FFBC00;
-  min-height: 300px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  overflow: hidden;
   cursor: pointer;
-  animation: fadeUp 0.5s ease forwards;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: fadeUp 0.6s ease forwards;
 }
 
 .item img {
@@ -95,144 +84,61 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.4s ease;
 }
 
-.item.is-hidden {
-  display: none;
+.item:hover img {
+  transform: scale(1.05);
 }
 
-/* TITLE OVER IMAGE (PROJECTS) */
+/* TITLE ON HOVER */
 .project-title {
   position: absolute;
   bottom: 12px;
   left: 12px;
-  font-size: 14px;
+  font-size: 13px;
   letter-spacing: 0.05em;
-  color: #FFBC00;
   opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.item.project:hover .project-title {
+.item:hover .project-title {
   opacity: 1;
 }
 
-/* ===== LIGHTBOX ===== */
-.focus-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(22,24,30,0.9);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 1000;
+/* FILTER HIDE */
+.item.is-hidden {
+  display: none;
 }
 
-.focus-overlay.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.focus-content {
-  background: #21242B;
-  border: 1px solid #FFBC00;
-  padding: 16px;
-  max-width: 90%;
-  max-height: 90%;
-}
-
-.focus-content img {
-  max-width: 100%;
-  max-height: 80vh;
-  display: block;
-}
-
-
-/* ===== ANIMATIONS ===== */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 48px;
-  }
-
-  .gallery {
-    grid-template-columns: 1fr 1fr;
-    padding: 20px;
-  }
-
-   .project-gallery {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-}
-
-/* BACK BUTTON — PROJECT PAGE */
-.project-back-container {
-  text-align: center;       /* центрируем кнопку */
-  margin: 20px 0;           /* отступ сверху и снизу */
-}
-
-.back-link {
-  display: inline-block;
-  background-color: #FFBC00; /* желтая плашка */
-  color: #16181E;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 4px;
-  transition: background 0.3s ease;
-}
-
-.back-link:hover {
-  background-color: #e0a800;
-}
-
-/* ===== CONTACT ===== */
-.contact {
-  padding: 80px 40px;
-  border-top: 1px solid #FFBC00;
-  text-align: center;
-}
-
-.contact-inner {
-  display: flex;
-  flex-direction: column;
+/* =========================
+   PROJECT PAGE GALLERY
+========================= */
+.project-gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
 }
 
-.contact-name {
-  letter-spacing: 0.25em;
-  font-size: 14px;
+.project-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid #FFBC00;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
-.contact a {
-  color: #FFBC00;
-  text-decoration: none;
-  font-size: 14px;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
+.project-gallery img:hover {
+  transform: scale(1.05);
 }
 
-.contact a:hover {
-  border-bottom: 1px solid #FFBC00;
-}
-
-/* ===== LIGHTBOX CONTROLS ===== */
-
+/* =========================
+   LIGHTBOX
+========================= */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -246,6 +152,17 @@ body {
   z-index: 2000;
 }
 
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+}
+
+/* CONTROLS */
 .lightbox-close,
 .lightbox-prev,
 .lightbox-next {
@@ -253,7 +170,7 @@ body {
   background: none;
   border: 1px solid #FFBC00;
   color: #FFBC00;
-  font-size: 28px;
+  font-size: 26px;
   cursor: pointer;
   padding: 8px 14px;
 }
@@ -271,32 +188,54 @@ body {
   right: 24px;
 }
 
-@media (max-width: 768px) {
-  .lightbox-prev,
-  .lightbox-next {
-    display: none; /* на мобильных — свайп */
+/* =========================
+   CONTACT
+========================= */
+.contact {
+  border-top: 1px solid #FFBC00;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact a {
+  color: #FFBC00;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.contact a:hover {
+  border-bottom: 1px solid #FFBC00;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
 
-/* ===== PROJECT GALLERY (FINAL) ===== */
-.project-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-  padding: 40px;
-}
+  .gallery-filter {
+    gap: 20px;
+  }
 
-.project-gallery img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  cursor: pointer;
-  border: 1px solid #FFBC00;
-  background: #21242B;
-  transition: transform 0.3s ease;
-}
-
-.project-gallery img:hover {
-  transform: scale(1.05);
+  .lightbox-prev,
+  .lightbox-next {
+    display: none;
+  }
 }
