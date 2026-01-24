@@ -29,8 +29,8 @@ body {
    LOGO
 ========================= */
 .logo {
-  width: 80px;
-  margin-bottom: 24px;
+  width: 230px;
+  margin-bottom: 98px;
 }
 
 /* =========================
@@ -239,3 +239,4 @@ body {
     display: none;
   }
 }
+
