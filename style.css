@@ -302,6 +302,12 @@ header.hero {
 .gallery .item {
   aspect-ratio: 4 / 5;
 }
+.gallery img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+
 
 
 
