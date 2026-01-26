@@ -62,12 +62,12 @@ body {
    MAIN GALLERY (HOME)
 ========================= */
 .gallery {
-  width: 100%;
   max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
-  padding: 20px;
 }
 
 /* GALLERY ITEM */
@@ -259,5 +259,6 @@ body {
   width: 100%;
   height: auto;
 }
+
 
 
