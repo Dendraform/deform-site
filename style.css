@@ -271,7 +271,7 @@ header.hero {
 .hero-lead,
 .hero-description {
   color: #5B5B5B;
-}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -284,6 +284,7 @@ header.hero {
   z-index: 0;
   pointer-events: none;
 }
+
 
 
 
