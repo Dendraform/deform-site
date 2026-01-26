@@ -266,12 +266,13 @@ header.hero {
 
 /* Галерею ПОДТЯГИВАЕМ ВВЕРХ, а не вниз */
 .gallery {
-  margin-top: 120px;
+  margin-top: 160px;
 }
 .hero-lead,
 .hero-description {
   color: #5B5B5B;
 }
+
 
 
 
