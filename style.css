@@ -16,32 +16,21 @@ body {
 /* =========================
    HERO / HEADER
 ========================= */
-header.hero {
+.hero {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 40px 20px 20px;
+  padding-top: 40px;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 188, 0, 0.2);
 }
 
 /* =========================
    LOGO
 ========================= */
 .logo {
-  margin-bottom: 32px;
-  opacity: 0;
-  transform: scale(0.95);
-  animation: fadeUp 1s ease forwards;
-}
-
-.logo svg {
-  display: block;
-  width: 520px;
-  max-width: 90vw;
-  height: auto;
+  width: 80px;
+  margin-bottom: 24px;
 }
 
 /* =========================
@@ -49,9 +38,8 @@ header.hero {
 ========================= */
 .gallery-filter {
   display: flex;
-  justify-content: center;
   gap: 32px;
-  padding: 20px 0 10px;
+  margin-bottom: 24px;
 }
 
 .gallery-filter button {
@@ -74,66 +62,180 @@ header.hero {
 ========================= */
 .gallery {
   width: 100%;
-  max-width: 1600px;
-  margin: -40px auto 0;        /* 👈 подняли галерею */
-  padding:
-
-     /* =========================
-   STABILIZE LAYOUT (FIX)
-   не трогает логику сайта
-========================= */
-
-/* HERO — вернуть нормальное поведение */
-header.hero {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 40px 20px 20px;
-  min-height: auto;
-}
-
-/* LOGO — вернуть размер и центр */
-.logo {
-  margin-bottom: 24px;
-}
-
-.logo svg {
-  width: 220px;
-  max-width: 90vw;
-  height: auto;
-  display: block;
-}
-
-/* FILTERS — вернуть под логотип */
-.gallery-filter {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin: 16px 0 24px;
-}
-
-/* GALLERY — аккуратно увеличить, БЕЗ ломки */
-.gallery {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 24px 32px 64px;
+  max-width: 1200px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-/* ITEMS — без лишних трансформаций */
-.gallery .item {
-  transform: none;
-  aspect-ratio: auto;
+/* GALLERY ITEM */
+.item {
+  position: relative;
+  background: #21242B;
+  border: 1px solid #FFBC00;
+  overflow: hidden;
+  cursor: pointer;
+  animation: fadeUp 0.6s ease forwards;
 }
 
-/* IMG — безопасно */
-.gallery .item img {
+.item img {
   width: 100%;
-  height: auto;
+  height: 100%;
   object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
 }
 
+.item:hover img {
+  transform: scale(1.05);
+}
+
+/* TITLE ON HOVER */
+.project-title {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.item:hover .project-title {
+  opacity: 1;
+}
+
+/* FILTER HIDE */
+.item.is-hidden {
+  display: none;
+}
+
+/* =========================
+   PROJECT PAGE GALLERY
+========================= */
+.project-gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.project-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid #FFBC00;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.project-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(22,24,30,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+}
+
+/* CONTROLS */
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: 1px solid #FFBC00;
+  color: #FFBC00;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 8px 14px;
+}
+
+.lightbox-close {
+  top: 24px;
+  right: 24px;
+}
+
+.lightbox-prev {
+  left: 24px;
+}
+
+.lightbox-next {
+  right: 24px;
+}
+
+/* =========================
+   CONTACT
+========================= */
+.contact {
+  border-top: 1px solid #FFBC00;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact a {
+  color: #FFBC00;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.contact a:hover {
+  border-bottom: 1px solid #FFBC00;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-filter {
+    gap: 20px;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    display: none;
+  }
+}
