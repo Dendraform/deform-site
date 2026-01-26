@@ -266,6 +266,11 @@ header.hero {
 .gallery {
   margin-top: 120px;
 }
+.hero-lead,
+.hero-description {
+  color: #5B5B5B;
+}
+
 
 
 
