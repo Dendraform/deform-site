@@ -77,3 +77,63 @@ header.hero {
   max-width: 1600px;
   margin: -40px auto 0;        /* 👈 подняли галерею */
   padding:
+
+     /* =========================
+   STABILIZE LAYOUT (FIX)
+   не трогает логику сайта
+========================= */
+
+/* HERO — вернуть нормальное поведение */
+header.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 40px 20px 20px;
+  min-height: auto;
+}
+
+/* LOGO — вернуть размер и центр */
+.logo {
+  margin-bottom: 24px;
+}
+
+.logo svg {
+  width: 220px;
+  max-width: 90vw;
+  height: auto;
+  display: block;
+}
+
+/* FILTERS — вернуть под логотип */
+.gallery-filter {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 16px 0 24px;
+}
+
+/* GALLERY — аккуратно увеличить, БЕЗ ломки */
+.gallery {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 32px 64px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+/* ITEMS — без лишних трансформаций */
+.gallery .item {
+  transform: none;
+  aspect-ratio: auto;
+}
+
+/* IMG — безопасно */
+.gallery .item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
