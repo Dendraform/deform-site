@@ -433,6 +433,45 @@ header.hero {
   opacity: 1;
   transform: translateY(0);
 }
+/* =========================
+   HERO TEXT LETTER ANIMATION
+========================= */
+.animated-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.animated-text span {
+  display: inline-block;
+  transform: translateY(100%);
+  opacity: 0;
+  animation: slideUp 0.6s forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Hero buttons плавный entrance */
+.hero-buttons {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUpButtons 0.8s forwards;
+  animation-delay: 1.2s; /* кнопки появляются после текста */
+}
+
+@keyframes fadeUpButtons {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 
 
 
