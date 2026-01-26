@@ -264,8 +264,9 @@ header.hero {
 
 /* Галерею ПОДТЯГИВАЕМ ВВЕРХ, а не вниз */
 .gallery {
-  margin-top: -40px;
+  margin-top: 40px;
 }
+
 
 
 
