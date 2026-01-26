@@ -262,6 +262,34 @@ body {
 header.hero {
   border-bottom: 1px solid rgba(255, 188, 0, 0.2);
 }
+.hero-text {
+  max-width: 720px;
+  margin: 24px auto 0;
+  text-align: center;
+  color: #222;
+}
+
+.hero-text h1 {
+  font-size: 28px;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.hero-lead {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.hero-description {
+  font-size: 14px;
+  line-height: 1.7;
+  opacity: 0.7;
+}
+
+
 
 
 
