@@ -1,6 +1,4 @@
-/* =========================
-   RESET
-========================= */
+/* ========================= RESET ========================= */
 * {
   margin: 0;
   padding: 0;
@@ -11,44 +9,39 @@ body {
   background: #16181E;
   color: #FFBC00;
   font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
-/* =========================
-   HERO
-========================= */
-.hero {
-  min-height: 100vh;
+/* ========================= HERO / HEADER ========================= */
+header.hero {
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 20px 20px;
-  text-align: center;
-  border-bottom: 1px solid rgba(255,188,0,0.2);
+  padding: 40px 20px;
+  border-bottom: 1px solid rgba(255, 188, 0, 0.2);
 }
 
-/* =========================
-   LOGO (SVG)
-========================= */
+/* ========================= LOGO ========================= */
 .logo {
   margin-bottom: 32px;
 }
 
 .logo svg {
-  width: 180px;
+  display: block;
+  width: 260px;
   max-width: 90vw;
   height: auto;
-  display: block;
 }
 
-/* =========================
-   FILTER BUTTONS
-========================= */
+/* ========================= FILTER BUTTONS ========================= */
 .gallery-filter {
   display: flex;
   justify-content: center;
   gap: 32px;
-  padding: 20px 0 10px;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 .gallery-filter button {
@@ -62,33 +55,31 @@ body {
   transition: border-color 0.3s ease;
 }
 
-.gallery-filter button.active {
-  border-bottom-color: #FFBC00;
+.gallery-filter button.active,
+.gallery-filter button:hover {
+  border-bottom: 1px solid #FFBC00;
 }
 
-/* =========================
-   MAIN GALLERY
-========================= */
+/* ========================= MAIN GALLERY (HOME) ========================= */
 .gallery {
   width: 100%;
-  max-width: 1600px;
-  margin: -40px auto 0; /* 👈 ПОДНЯЛИ ГАЛЕРЕЮ */
-  padding: 32px;
+  max-width: 1600px; /* шире для крупной галереи */
+  margin: 0 auto;
+  padding: 20px 32px 60px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 👈 КРУПНЕЕ */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* крупные карточки */
   gap: 36px;
 }
 
-/* =========================
-   GALLERY ITEM
-========================= */
+/* ========================= GALLERY ITEM ========================= */
 .item {
   position: relative;
   background: #21242B;
   border: 1px solid #FFBC00;
   overflow: hidden;
-  aspect-ratio: 3 / 4.5; /* 👈 ВЫШЕ */
   cursor: pointer;
+  aspect-ratio: 3 / 4.5; /* вытянутые и более выразительные */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .item img {
@@ -96,16 +87,14 @@ body {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.4s ease;
 }
 
-.item:hover img {
-  transform: scale(1.05);
+.item:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 12px 28px rgba(255, 188, 0, 0.35);
 }
 
-/* =========================
-   TITLE ON HOVER
-========================= */
+/* TITLE ON HOVER */
 .project-title {
   position: absolute;
   bottom: 12px;
@@ -120,35 +109,114 @@ body {
   opacity: 1;
 }
 
-/* =========================
-   FILTER HIDE
-========================= */
+/* FILTER HIDE */
 .item.is-hidden {
   display: none;
 }
 
-/* =========================
-   CONTACT
-========================= */
+/* ========================= PROJECT PAGE GALLERY ========================= */
+.project-gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.project-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid #FFBC00;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.project-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* ========================= LIGHTBOX ========================= */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(22,24,30,0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.lightbox.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 80vh;
+  object-fit: contain;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+  position: absolute;
+  background: none;
+  border: 1px solid #FFBC00;
+  color: #FFBC00;
+  font-size: 26px;
+  cursor: pointer;
+  padding: 8px 14px;
+}
+
+.lightbox-close {
+  top: 24px;
+  right: 24px;
+}
+
+.lightbox-prev {
+  left: 24px;
+}
+
+.lightbox-next {
+  right: 24px;
+}
+
+/* ========================= CONTACT ========================= */
 .contact {
   border-top: 1px solid #FFBC00;
   padding: 60px 20px;
-  text-align: center;
 }
 
 .contact a {
   color: #FFBC00;
   text-decoration: none;
   border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease;
 }
 
 .contact a:hover {
-  border-bottom-color: #FFBC00;
+  border-bottom: 1px solid #FFBC00;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* ========================= RESPONSIVE ========================= */
 @media (max-width: 768px) {
   .gallery {
-    grid-templat
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .gallery-filter {
+    gap: 20px;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    display: none;
+  }
+}
