@@ -13,13 +13,14 @@ body {
 }
 
 /* ========================= HERO / HEADER ========================= */
-header.hero {
-  min-height: 80vh;
+.hero {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start; /* 👈 поднимаем вверх */
   align-items: center;
-  justify-content: flex-start; /* 🔥 ключевое */
-  padding: 80px 20px 40px;     /* 🔥 поднимаем всё вверх */
+  padding-top: 80px; /* 👈 отступ сверху */
+  padding-bottom: 40px; /* 👈 сохраняем нижний отступ */
 }
 }
 .hero::before {
@@ -236,6 +237,7 @@ header.hero {
 .hero {
   position: relative; /* важно для pseudo-элемента ::before */
 }
+
 
 
 
