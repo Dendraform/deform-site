@@ -14,23 +14,31 @@ body {
 }
 
 /* =========================
-   HERO / HEADER
+   HERO
 ========================= */
 .hero {
-  padding: 80px 20px 40px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 40px 20px 20px;
   text-align: center;
+  border-bottom: 1px solid rgba(255,188,0,0.2);
 }
 
-
 /* =========================
-   LOGO
+   LOGO (SVG)
 ========================= */
 .logo {
-  width: 80px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+}
+
+.logo svg {
+  width: 180px;
+  max-width: 90vw;
+  height: auto;
+  display: block;
 }
 
 /* =========================
@@ -55,29 +63,32 @@ body {
 }
 
 .gallery-filter button.active {
-  border-bottom: 1px solid #FFBC00;
+  border-bottom-color: #FFBC00;
 }
 
 /* =========================
-   MAIN GALLERY (HOME)
+   MAIN GALLERY
 ========================= */
 .gallery {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  width: 100%;
+  max-width: 1600px;
+  margin: -40px auto 0; /* 👈 ПОДНЯЛИ ГАЛЕРЕЮ */
+  padding: 32px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* 👈 КРУПНЕЕ */
+  gap: 36px;
 }
 
-/* GALLERY ITEM */
+/* =========================
+   GALLERY ITEM
+========================= */
 .item {
   position: relative;
   background: #21242B;
   border: 1px solid #FFBC00;
   overflow: hidden;
+  aspect-ratio: 3 / 4.5; /* 👈 ВЫШЕ */
   cursor: pointer;
-  animation: fadeUp 0.6s ease forwards;
 }
 
 .item img {
@@ -92,7 +103,9 @@ body {
   transform: scale(1.05);
 }
 
-/* TITLE ON HOVER */
+/* =========================
+   TITLE ON HOVER
+========================= */
 .project-title {
   position: absolute;
   bottom: 12px;
@@ -107,86 +120,11 @@ body {
   opacity: 1;
 }
 
-/* FILTER HIDE */
+/* =========================
+   FILTER HIDE
+========================= */
 .item.is-hidden {
   display: none;
-}
-
-/* =========================
-   PROJECT PAGE GALLERY
-========================= */
-.project-gallery {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-}
-
-.project-gallery img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border: 1px solid #FFBC00;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.project-gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* =========================
-   LIGHTBOX
-========================= */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(22,24,30,0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 2000;
-}
-
-.lightbox.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 80vh;
-}
-
-/* CONTROLS */
-.lightbox-close,
-.lightbox-prev,
-.lightbox-next {
-  position: absolute;
-  background: none;
-  border: 1px solid #FFBC00;
-  color: #FFBC00;
-  font-size: 26px;
-  cursor: pointer;
-  padding: 8px 14px;
-}
-
-.lightbox-close {
-  top: 24px;
-  right: 24px;
-}
-
-.lightbox-prev {
-  left: 24px;
-}
-
-.lightbox-next {
-  right: 24px;
 }
 
 /* =========================
@@ -202,25 +140,10 @@ body {
   color: #FFBC00;
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
 }
 
 .contact a:hover {
-  border-bottom: 1px solid #FFBC00;
-}
-
-/* =========================
-   ANIMATIONS
-========================= */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  border-bottom-color: #FFBC00;
 }
 
 /* =========================
@@ -228,65 +151,4 @@ body {
 ========================= */
 @media (max-width: 768px) {
   .gallery {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .gallery-filter {
-    gap: 20px;
-  }
-
-  .lightbox-prev,
-  .lightbox-next {
-    display: none;
-  }
-}
-.logo svg {
-  width: 240px;     /* можно менять под вкус */
-  max-width: 80vw;
-  height: auto;
-  display: block;
-}
-.gallery {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-}
-.logo svg {
-  max-width: 420px;
-  width: 100%;
-  height: auto;
-}
-.hero-text {
-  max-width: 720px;
-  margin: 24px auto 0;
-  text-align: center;
-  color: #222;
-}
-
-.hero-text h1 {
-  font-size: 28px;
-  letter-spacing: 0.08em;
-  margin-bottom: 16px;
-  font-weight: 600;
-}
-
-.hero-lead {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 16px;
-  opacity: 0.9;
-}
-
-.hero-description {
-  font-size: 14px;
-  line-height: 1.7;
-  opacity: 0.7;
-}
-
-
-
-
-
+    grid-templat
