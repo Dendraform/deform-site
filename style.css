@@ -17,20 +17,22 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* 👈 поднимаем вверх */
+  justify-content: flex-start; /* поднимаем контент вверх */
   align-items: center;
-  padding-top: 80px; /* 👈 отступ сверху */
-  padding-bottom: 40px; /* 👈 сохраняем нижний отступ */
+  padding-top: 80px;
+  padding-bottom: 40px;
+  position: relative;
+  z-index: 1;
 }
-}
+
 .hero::before {
   content: '';
   position: absolute;
-  inset: 0; /* растягивает по всей области hero */
-  background: url('images/background.svg') center/cover no-repeat;
-  opacity: 0.16;  /* регулируем прозрачность */
-  z-index: -1;    /* чтобы фон был за всем контентом */
-  pointer-events: none; /* фон не мешает кликам */
+  inset: 0;
+  background: url('images/background.svg') center / contain no-repeat;
+  opacity: 0.16;
+  z-index: 0;
+  pointer-events: none;
 }
 
 
@@ -270,6 +272,7 @@ header.hero {
 .hero-description {
   color: #5B5B5B;
 }
+
 
 
 
