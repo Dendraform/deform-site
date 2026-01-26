@@ -276,33 +276,33 @@ header.hero {
 }
 .hero-text {
   max-width: 720px;
-  margin: 24px auto 0;
-  text-align: center;
-  color: #222;
+  margin: 0 auto 40px;
 }
 
 .hero-text h1 {
   font-size: 28px;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   margin-bottom: 16px;
-  font-weight: 600;
+  color: #1a1a1a;
 }
 
 .hero-lead {
   font-size: 16px;
   line-height: 1.6;
-  margin-bottom: 16px;
-  opacity: 0.9;
+  margin-bottom: 20px;
+  color: #333;
 }
 
 .hero-description {
   font-size: 14px;
-  line-height: 1.7;
-  opacity: 0.7;
+  line-height: 1.8;
+  color: #555;
 }
+
 .gallery .item {
   aspect-ratio: 4 / 5;
 }
+
 
 
 
