@@ -18,9 +18,9 @@ header.hero {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-  border-bottom: 1px solid rgba(255, 188, 0, 0.2);
+  justify-content: flex-start; /* 🔥 ключевое */
+  padding: 80px 20px 40px;     /* 🔥 поднимаем всё вверх */
+}
 }
 .hero::before {
   content: '';
@@ -122,6 +122,9 @@ header.hero {
 /* FILTER HIDE */
 .item.is-hidden {
   display: none;
+}
+.gallery {
+  margin-top: -20px;
 }
 
 /* ========================= PROJECT PAGE GALLERY ========================= */
@@ -231,12 +234,9 @@ header.hero {
   }
 }
 .hero {
-  position: relative;
-  min-height: 100vh;
-}
-.hero {
   position: relative; /* важно для pseudo-элемента ::before */
 }
+
 
 
 
