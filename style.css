@@ -237,6 +237,37 @@ body {
 .hero {
   position: relative; /* важно для pseudo-элемента ::before */
 }
+/* =========================
+   SAFE FIX — HARMONY
+   ничего не ломает
+========================= */
+
+/* Hero — поднимаем контент, без центрирования */
+header.hero {
+  min-height: auto;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  justify-content: flex-start;
+}
+
+/* Логотип чуть выше, но не впритык */
+.logo {
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+/* Фильтры ближе к логотипу */
+.gallery-filter {
+  margin-top: 12px;
+  margin-bottom: 32px;
+}
+
+/* Галерею ПОДТЯГИВАЕМ ВВЕРХ, а не вниз */
+.gallery {
+  margin-top: -20px;
+}
+
+
 
 
 
