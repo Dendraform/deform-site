@@ -277,13 +277,14 @@ header.hero {
   position: absolute;
   inset: 0;
   background-image: url('images/background.svg');
-  background-repeat: repeat;
-  background-size: 600px auto; /* 👈 масштаб SVG */
-  background-position: center top;
+  background-repeat: no-repeat;     /* 👈 не повторяется */
+  background-size: cover;           /* 👈 растягивается */
+  background-position: center;
   opacity: 0.14;
   z-index: 0;
   pointer-events: none;
 }
+
 
 
 
