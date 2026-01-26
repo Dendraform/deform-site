@@ -299,13 +299,23 @@ header.hero {
   color: #555;
 }
 
+/* Галерея — крупнее объекты */
+.gallery {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* увеличили min ширину */
+  gap: 36px; /* увеличили отступы между элементами */
+  padding: 40px 32px; /* больше пространства */
+}
+
 .gallery .item {
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4; /* чуть «выше», визуально поднимаем объект */
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
-.gallery img:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
+
+.gallery img {
+  height: 100%;
+  object-fit: cover;
 }
+
 /* =========================
    HERO — ЭФФЕКТ
 ========================= */
@@ -501,6 +511,7 @@ header.hero {
     transform: translateY(0);
   }
 }
+
 
 
 
