@@ -27,7 +27,7 @@ header.hero {
   position: absolute;
   inset: 0; /* растягивает по всей области hero */
   background: url('images/background.svg') center/cover no-repeat;
-  opacity: 0.08;  /* регулируем прозрачность */
+  opacity: 0.16;  /* регулируем прозрачность */
   z-index: -1;    /* чтобы фон был за всем контентом */
   pointer-events: none; /* фон не мешает кликам */
 }
@@ -237,6 +237,7 @@ header.hero {
 .hero {
   position: relative; /* важно для pseudo-элемента ::before */
 }
+
 
 
 
