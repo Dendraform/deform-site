@@ -324,10 +324,31 @@ body::before {
   opacity: 1;
   transform: translateX(-6px);
 }
+.project-intro {
+  max-width: 640px;
+  margin: 40px auto 60px;
+  text-align: center;
+}
+
+.project-intro h1 {
+  font-size: 22px;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: #FFBC00;
+}
+
+.project-intro p {
+  font-size: 14px;
+  line-height: 1.9;
+  color: #5B5B5B;
+}
+
 
 
 
   
+
 
 
 
