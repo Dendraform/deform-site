@@ -302,6 +302,7 @@ body::before {
   opacity: 0.12;
   z-index: -1;
   pointer-events: none;
+  animation: bgFloat 50s ease-in-out infinite;
 }
 .project-back-container {
   max-width: 1200px;
@@ -354,12 +355,25 @@ body::before {
   font-size: 13px;
   opacity: 0.5;
 }
+@keyframes bgFloat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 
 
 
 
   
+
 
 
 
