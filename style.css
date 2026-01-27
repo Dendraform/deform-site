@@ -303,9 +303,32 @@ body::before {
   z-index: -1;
   pointer-events: none;
 }
+.project-back-container {
+  max-width: 1200px;
+  margin: 40px auto 20px;
+  padding: 0 20px;
+  text-align: left;
+}
+
+.back-link {
+  display: inline-block;
+  color: #FFBC00;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  opacity: 0.6;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.back-link:hover {
+  opacity: 1;
+  transform: translateX(-6px);
+}
+
 
 
   
+
 
 
 
