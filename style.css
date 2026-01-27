@@ -343,11 +343,24 @@ body::before {
   line-height: 1.9;
   color: #5B5B5B;
 }
+.project-intro h1 {
+  margin-top: 20px;
+  margin-bottom: 28px;
+}
+.project-intro {
+  margin-bottom: 80px;
+}
+.back-link {
+  font-size: 13px;
+  opacity: 0.5;
+}
+
 
 
 
 
   
+
 
 
 
