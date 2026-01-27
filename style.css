@@ -302,7 +302,8 @@ body::before {
   opacity: 0.12;
   z-index: -1;
   pointer-events: none;
-  animation: bgFloat 50s ease-in-out infinite;
+  animation: bgFloat 60s ease-in-out infinite;
+  will-change: transform;
 }
 .project-back-container {
   max-width: 1200px;
@@ -357,13 +358,13 @@ body::before {
 }
 @keyframes bgFloat {
   0% {
-    transform: scale(1);
+    transform: scale(1) translateY(0);
   }
   50% {
-    transform: scale(1.04);
+    transform: scale(1.035) translateY(-2%);
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) translateY(0);
   }
 }
 
@@ -372,7 +373,9 @@ body::before {
 
 
 
+
   
+
 
 
 
