@@ -126,9 +126,18 @@ if (window.innerWidth > 768) {
   });
 }
 </script>
+  
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.animate').forEach(el => {
+      el.classList.add('show');
+    });
+  });
+</script>
 
 </body>
 </html>
+
 
 
 
