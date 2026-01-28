@@ -1,10 +1,12 @@
-/* ========================= RESET ========================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  background: #16181E;
+}
 body {
   background: transparent;
   color: #FFBC00;
@@ -12,288 +14,10 @@ body {
   text-align: center;
 }
 
-/* ========================= HERO / HEADER ========================= */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* поднимаем контент вверх */
-  align-items: center;
-  padding-top: 80px;
-  padding-bottom: 40px;
-  position: relative;
-  z-index: 1;
-}
-
-/* ========================= LOGO ========================= */
-.logo {
-  margin-bottom: 32px;
-}
-
-.logo svg {
-  display: block;
-  width: 260px;
-  max-width: 90vw;
-  height: auto;
-}
-
-/* ========================= FILTER BUTTONS ========================= */
-.gallery-filter {
-  display: flex;
-  justify-content: center;
-  gap: 32px;
-  margin-top: 24px;
-  margin-bottom: 24px;
-}
-
-.gallery-filter button {
-  background: none;
-  border: none;
-  color: #FFBC00;
-  font-size: 14px;
-  cursor: pointer;
-  padding-bottom: 4px;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-.gallery-filter button.active,
-.gallery-filter button:hover {
-  border-bottom: 1px solid #FFBC00;
-}
-
-/* ========================= MAIN GALLERY (HOME) ========================= */
-.gallery {
-  width: 100%;
-  max-width: 1600px; /* шире для крупной галереи */
-  margin: 0 auto;
-  padding: 20px 32px 60px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* крупные карточки */
-  gap: 36px;
-}
-
-/* ========================= GALLERY ITEM ========================= */
-.item {
-  position: relative;
-  background: #21242B;
-  border: 1px solid #FFBC00;
-  overflow: hidden;
-  cursor: pointer;
-  aspect-ratio: 3 / 4.5; /* вытянутые и более выразительные */
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.item:hover {
-  transform: translateY(-8px) scale(1.04);
-  box-shadow: 0 12px 28px rgba(255, 188, 0, 0.35);
-}
-
-/* TITLE ON HOVER */
-.project-title {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  font-size: 13px;
-  letter-spacing: 0.05em;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.item:hover .project-title {
-  opacity: 1;
-}
-
-/* FILTER HIDE */
-.item.is-hidden {
-  display: none;
-}
-.gallery {
-  margin-top: -20px;
-}
-
-/* ========================= PROJECT PAGE GALLERY ========================= */
-.project-gallery {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-}
-
-.project-gallery img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border: 1px solid #FFBC00;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.project-gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* ========================= LIGHTBOX ========================= */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(22,24,30,0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-  z-index: 2000;
-}
-
-.lightbox.active {
-  opacity: 1;
-  pointer-events: all;
-}
-
-.lightbox img {
-  max-width: 90%;
-  max-height: 80vh;
-  object-fit: contain;
-}
-
-.lightbox-close,
-.lightbox-prev,
-.lightbox-next {
-  position: absolute;
-  background: none;
-  border: 1px solid #FFBC00;
-  color: #FFBC00;
-  font-size: 26px;
-  cursor: pointer;
-  padding: 8px 14px;
-}
-
-.lightbox-close {
-  top: 24px;
-  right: 24px;
-}
-
-.lightbox-prev {
-  left: 24px;
-}
-
-.lightbox-next {
-  right: 24px;
-}
-
-/* ========================= CONTACT ========================= */
-.contact {
-  border-top: 1px solid #FFBC00;
-  padding: 60px 20px;
-}
-
-.contact a {
-  color: #FFBC00;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.3s ease;
-}
-
-.contact a:hover {
-  border-bottom: 1px solid #FFBC00;
-}
-
-/* ========================= RESPONSIVE ========================= */
-@media (max-width: 768px) {
-  .gallery {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-
-  .gallery-filter {
-    gap: 20px;
-  }
-
-  .lightbox-prev,
-  .lightbox-next {
-    display: none;
-  }
-}
-.hero {
-  position: relative; /* важно для pseudo-элемента ::before */
-}
-/* =========================
-   SAFE FIX — HARMONY
-   ничего не ломает
-========================= */
-
-/* Hero — поднимаем контент, без центрирования */
-header.hero {
-  min-height: auto;
-  padding-top: 80px;
-  padding-bottom: 40px;
-  justify-content: flex-start;
-}
-
-/* Логотип чуть выше, но не впритык */
-.logo {
-  margin-top: 20px;
-  margin-bottom: 24px;
-}
-
-/* Фильтры ближе к логотипу */
-.gallery-filter {
-  margin-top: 12px;
-  margin-bottom: 32px;
-}
-
-/* Галерею ПОДТЯГИВАЕМ ВВЕРХ, а не вниз */
-.gallery {
-  margin-top: 160px;
-}
-.hero-lead,
-.hero-description {
-  color: #5B5B5B;
-} 
-
-.hero-text h1 {
-  color: #5B5B5B;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  margin-bottom: 20px;
-}
-.hero-text p {
-  line-height: 1.8;
-}
-  .hero-text {
-  max-width: 520px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-  .hero-lead {
-  font-size: 16px;
-  opacity: 0.85;
-  margin-bottom: 14px;
-}
-
-.hero-description {
-  font-size: 14px;
-  opacity: 0.65;
-}
-/* =========================
-   GLOBAL SVG BACKGROUND
-   на всю страницу
-========================= */
-
+/* ФОН ПАРАЛЛАКСА */
 .bg-parallax {
   position: fixed;
-  inset: 0; /* top:0; bottom:0; left:0; right:0 */
+  inset: 0;
   background-image: url('images/background.svg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -305,7 +29,6 @@ header.hero {
   transition: transform 0.2s ease-out;
   will-change: transform;
 
-  /* плавное «плавающее» движение */
   animation: bgFloat 40s ease-in-out infinite;
 }
 
@@ -315,120 +38,41 @@ header.hero {
   100% { transform: scale(1.12) translateY(0); }
 }
 
-.project-back-container {
-  max-width: 1200px;
-  margin: 40px auto 20px;
-  padding: 0 20px;
-  text-align: left;
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 80px;
+  padding-bottom: 40px;
+  position: relative;
+  z-index: 1;
 }
 
-.back-link {
-  display: inline-block;
-  color: #FFBC00;
-  text-decoration: none;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  opacity: 0.6;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+/* ЛОГО */
+.logo {
+  margin-bottom: 32px;
+}
+.logo svg {
+  display: block;
+  width: 260px;
+  max-width: 90vw;
+  height: auto;
 }
 
-.back-link:hover {
-  opacity: 1;
-  transform: translateX(-6px);
+/* GALLERY FILTER, ITEMS… */
+.gallery-filter { ... твои стили ... }
+.gallery { ... }
+.item { ... }
+.item img { ... }
+
+/* Контакт и остальное */
+.contact { ... }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .gallery { grid-template-columns: 1fr 1fr; gap: 24px; }
+  .gallery-filter { gap: 20px; }
 }
-.project-intro {
-  max-width: 640px;
-  margin: 40px auto 60px;
-  text-align: center;
-}
-
-.project-intro h1 {
-  font-size: 22px;
-  letter-spacing: 0.12em;
-  font-weight: 400;
-  margin-bottom: 20px;
-  color: #FFBC00;
-}
-
-.project-intro p {
-  font-size: 14px;
-  line-height: 1.9;
-  color: #5B5B5B;
-}
-.project-intro h1 {
-  margin-top: 20px;
-  margin-bottom: 28px;
-}
-.project-intro {
-  margin-bottom: 80px;
-}
-.back-link {
-  font-size: 13px;
-  opacity: 0.5;
-}
-@keyframes bgFloat {
-  0% {
-    transform: scale(1) translateY(0);
-  }
-  50% {
-    transform: scale(1.08) translateY(-4%);
-  }
-  100% {
-    transform: scale(1) translateY(0);
-  }
-}
-html {
-  background: #16181E;
-}
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
