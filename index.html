@@ -192,28 +192,38 @@ const appearOnScroll = new IntersectionObserver((entries, observer) => {
 faders.forEach(fader => appearOnScroll.observe(fader));
 	
 <body>
-	
+  <!-- Параллакс фон -->
   <div class="bg-parallax"></div>
 
-  <header class="hero">...</header>
-  <main>...</main>
+  <!-- Контент сайта -->
+  <header class="hero">
+    <!-- твой логотип и текст -->
+  </header>
+  <main>
+    <!-- галерея и остальное -->
+  </main>
 
+  <footer>
+    <!-- контакты -->
+  </footer>
+
+  <!-- Скрипт параллакса -->
   <script>
     if (window.innerWidth > 768) {
       const bg = document.querySelector('.bg-parallax');
 
       document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 40;
-        const y = (e.clientY / window.innerHeight - 0.5) * 25;
+        const x = (e.clientX / window.innerWidth - 0.5) * 30; // горизонтальное смещение
+        const y = (e.clientY / window.innerHeight - 0.5) * 18; // вертикальное смещение
 
-        bg.style.setProperty('--bg-x', `${x}px`);
-        bg.style.setProperty('--bg-y', `${y}px`);
+        bg.style.transform = `translate(${x}px, ${y}px) scale(1.12)`;
       });
     }
   </script>
-
 </body>
+
 </html>
+
 
 
 
