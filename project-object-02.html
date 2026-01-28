@@ -5,40 +5,32 @@
   <title>Object 02 - DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* BACK BUTTON */
-    .project-back-container { text-align: center; margin: 20px 0; }
-    .back-link { display: inline-block; background: #FFBC00; color: #16181E; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: bold; transition: background 0.3s ease; }
-    .back-link:hover { background: #e6ac00; }
-
-    /* PROJECT GALLERY */
-    .project-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; padding: 20px; }
-    .project-gallery img { width: 100%; aspect-ratio: 1/1; object-fit: cover; cursor: pointer; border: 1px solid #FFBC00; transition: transform 0.3s ease; }
-    .project-gallery img:hover { transform: scale(1.05); }
-
-    /* LIGHTBOX */
-    .lightbox { position: fixed; inset: 0; background: rgba(22,24,30,0.9); display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; z-index: 1000; transition: opacity 0.3s ease; flex-direction: column; }
-    .lightbox.active { opacity: 1; pointer-events: all; }
-    .lightbox img { max-width: 90%; max-height: 80vh; transition: opacity 0.3s ease; }
-    .lightbox img.fade { opacity: 0; }
-    .lightbox button { position: absolute; background: #FFBC00; border: none; color: #16181E; font-size: 24px; cursor: pointer; padding: 8px 12px; border-radius: 4px; user-select: none; }
-    .lightbox-close { top: 20px; right: 20px; }
-    .lightbox-prev { left: 20px; top: 50%; transform: translateY(-50%); }
-    .lightbox-next { right: 20px; top: 50%; transform: translateY(-50%); }
-  </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header class="hero">
-  <div class="logo-mark"></div>
-  <h1>Object 02</h1>
-  <p>Description of this project goes here…</p>
+  <div class="hero-content">
+    <div class="logo">
+      <img src="images/logo.svg" alt="Dendraform logo" class="logo-img">
+    </div>
+    <div class="hero-text">
+      <h1>Object 02</h1>
+      <p class="hero-lead">Описание проекта можно вставить здесь…</p>
+      <p class="hero-description">Дополнительные детали проекта, материалы, идеи и т.д.</p>
+    </div>
+  </div>
 </header>
 
-<div class="project-back-container">
-  <a href="index.html" class="back-link">← Back to Gallery</a>
-</div>
+<!-- PROJECT INTRO -->
+<section class="project-intro">
+  <h1>Object 02</h1>
+  <p>
+    Здесь будет текст с описанием объекта 02, который ты потом заменишь.
+  </p>
+</section>
 
+<!-- GALLERY -->
 <section class="project-gallery">
   <img src="images/object-02-01.jpg" alt="">
   <img src="images/object-02-02.jpg" alt="">
@@ -50,9 +42,9 @@
   <img src="images/object-02-08.jpg" alt="">
   <img src="images/object-02-09.jpg" alt="">
   <img src="images/object-02-10.jpg" alt="">
-  
 </section>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close">✕</button>
   <button class="lightbox-prev">‹</button>
@@ -60,6 +52,12 @@
   <button class="lightbox-next">›</button>
 </div>
 
+<!-- BACK BUTTON -->
+<div class="project-back-container">
+  <a href="index.html" class="back-link">← Back to Gallery</a>
+</div>
+
+<!-- CONTACT -->
 <section class="contact">
   <div class="contact-inner">
     <p class="contact-name">DEFORM</p>
@@ -68,6 +66,7 @@
   </div>
 </section>
 
+<!-- JS: Lightbox -->
 <script>
 document.addEventListener('DOMContentLoaded', () => {
   const images = Array.from(document.querySelectorAll('.project-gallery img'));
@@ -79,21 +78,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let currentIndex = 0;
 
-  function openLightbox(index) { currentIndex = index; lightboxImage.src = images[currentIndex].src; lightbox.classList.add('active'); }
-  function closeLightbox() { lightbox.classList.remove('active'); }
-  function nextImage() { lightboxImage.classList.add('fade'); setTimeout(()=>{ currentIndex=(currentIndex+1)%images.length; lightboxImage.src=images[currentIndex].src; lightboxImage.classList.remove('fade'); },200); }
-  function prevImage() { lightboxImage.classList.add('fade'); setTimeout(()=>{ currentIndex=(currentIndex-1+images.length)%images.length; lightboxImage.src=images[currentIndex].src; lightboxImage.classList.remove('fade'); },200); }
+  function openLightbox(index) {
+    currentIndex = index;
+    lightboxImage.src = images[currentIndex].src;
+    lightbox.classList.add('active');
+  }
 
-  images.forEach((img,index)=>{ img.addEventListener('click',()=>openLightbox(index)); });
-  btnNext.addEventListener('click',e=>{ e.stopPropagation(); nextImage(); });
-  btnPrev.addEventListener('click',e=>{ e.stopPropagation(); prevImage(); });
-  btnClose.addEventListener('click',closeLightbox);
-  lightbox.addEventListener('click',e=>{ if(e.target===lightbox) closeLightbox(); });
-  document.addEventListener('keydown',e=>{ if(!lightbox.classList.contains('active')) return; if(e.key==='Escape') closeLightbox(); if(e.key==='ArrowRight') nextImage(); if(e.key==='ArrowLeft') prevImage(); });
-  let startX=0; lightbox.addEventListener('touchstart',e=>startX=e.touches[0].clientX); lightbox.addEventListener('touchend',e=>{ const endX=e.changedTouches[0].clientX; if(startX-endX>50) nextImage(); if(endX-startX>50) prevImage(); });
+  function closeLightbox() {
+    lightbox.classList.remove('active');
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    lightboxImage.src = images[currentIndex].src;
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    lightboxImage.src = images[currentIndex].src;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => openLightbox(index));
+  });
+
+  btnNext.addEventListener('click', e => { e.stopPropagation(); nextImage(); });
+  btnPrev.addEventListener('click', e => { e.stopPropagation(); prevImage(); });
+  btnClose.addEventListener('click', closeLightbox);
+
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!lightbox.classList.contains('active')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') nextImage();
+    if (e.key === 'ArrowLeft') prevImage();
+  });
+
+  let startX = 0;
+  lightbox.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+  lightbox.addEventListener('touchend', e => {
+    const endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) nextImage();
+    if (endX - startX > 50) prevImage();
+  });
 });
 </script>
 
 </body>
 </html>
-
