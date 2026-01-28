@@ -263,7 +263,7 @@ header.hero {
 
 /* Галерею ПОДТЯГИВАЕМ ВВЕРХ, а не вниз */
 .gallery {
-  margin-top: 160px;
+  margin-top: 120px;
 }
 
 .hero-lead,
@@ -405,6 +405,7 @@ html {
     transform: translateY(0);
   }
 }
+
 
 
 
