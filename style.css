@@ -30,12 +30,12 @@ body {
   margin-bottom: 32px;
 }
 
-.logo svg {
-  display: block;
-  width: 260px;
-  max-width: 90vw;
-  height: auto;
+.logo-img {
+  width: 200px;     /* Можно менять под дизайн */
+  height: auto;     /* Сохраняет пропорции */
+  display: block;   /* Чтобы убрать лишние отступы под inline элементами */
 }
+
 
 /* ========================= FILTER BUTTONS ========================= */
 .gallery-filter {
@@ -379,3 +379,4 @@ header.hero {
 html {
   background: #16181E;
 }
+
