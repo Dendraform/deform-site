@@ -388,6 +388,24 @@ header.hero {
 html {
   background: #16181E;
 }
+/* ========================= HERO FADE-IN ANIMATION ========================= */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px); /* чуть сдвигаем вниз */
+  animation: fadeInUp 1s forwards; /* анимация */
+}
+
+.fade-in.delay-1 {
+  animation-delay: 0.5s; /* задержка для текста */
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
 
