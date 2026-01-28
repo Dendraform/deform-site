@@ -303,7 +303,7 @@ body::before {
   z-index: -1;
   pointer-events: none;
 
-  transform: var(--bg-transform, scale(1.1));
+ transform: translate(var(--bg-x, 0px), var(--bg-y, 0px)) scale(1.12);
   transition: transform 0.6s ease-out;
   will-change: transform;
 }
@@ -379,6 +379,7 @@ body::before {
 
 
   
+
 
 
 
