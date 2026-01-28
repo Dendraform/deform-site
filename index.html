@@ -1,102 +1,131 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>DEFORM</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* Фоновый параллакс */
-    .bg-parallax {
-      position: fixed;
-      inset: 0;
-      background-image: url('images/background.svg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      opacity: 0.12;
-      z-index: -1;
-      pointer-events: none;
-
-      transform: translate(var(--bg-x, 0px), var(--bg-y, 0px)) scale(1.12);
-      transition: transform 0.6s ease-out;
-      will-change: transform;
-    }
-
-    body {
-      background: #16181E;
-      color: #FFBC00;
-      font-family: Arial, Helvetica, sans-serif;
-      text-align: center;
-      margin: 0;
-    }
-
-    header.hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      padding-top: 80px;
-      padding-bottom: 40px;
-      position: relative;
-      z-index: 1;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Фоновый параллакс -->
-  <div class="bg-parallax"></div>
+<!-- GLOBAL PARALLAX BACKGROUND -->
+<div class="bg-parallax"></div>
 
-  <!-- HEADER -->
-  <header class="hero">
-    <div class="logo">
-      <!-- SVG логотип здесь -->
-    </div>
-    <div class="hero-text">
-      <h1>ДЕНДРАФОРМ</h1>
-      <p class="hero-lead">Авторские предметы интерьера из природных форм</p>
-      <p class="hero-description">Природа — соавтор. Каждый объект уникален.</p>
-    </div>
-  </header>
-
-  <!-- GALLERY и остальное -->
-  <div class="gallery-filter">
-    <button class="active" data-filter="objects">Objects</button>
-    <button data-filter="paintings">Paintings</button>
-    <button data-filter="illustrations">Illustrations</button>
+<!-- HERO / HEADER -->
+<header class="hero">
+  <div class="logo">
+    <!-- SVG Logo -->
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 516.2 222.3" aria-label="Dendraform logo">
+      <!-- твой полный SVG код -->
+    </svg>
   </div>
 
-  <section class="gallery">
-    <!-- Пример элементов -->
-    <a href="#" class="item project" data-category="objects">
-      <img src="images/object-01-cover.jpg" alt="Object 01">
-      <span class="project-title">Object 01</span>
-    </a>
-  </section>
+  <div class="hero-text">
+    <h1>ДЕНДРАФОРМ</h1>
+    <p class="hero-lead">Авторские предметы интерьера из природных форм</p>
+    <p class="hero-description">Природа — соавтор. Каждый объект уникален.</p>
+  </div>
+</header>
 
-  <!-- CONTACT -->
-  <section class="contact">
-    <p>DEFORM</p>
+<!-- FILTER -->
+<div class="gallery-filter">
+  <button class="active" data-filter="objects">Objects</button>
+  <button data-filter="paintings">Paintings</button>
+  <button data-filter="illustrations">Illustrations</button>
+</div>
+
+<!-- MAIN GALLERY -->
+<section class="gallery">
+  <a href="project-object-01.html" class="item project" data-category="objects">
+    <img src="images/object-01-cover.jpg" alt="Object 01">
+    <span class="project-title">Object 01</span>
+  </a>
+  <a href="project-object-02.html" class="item project" data-category="objects">
+    <img src="images/object-02-cover.jpg" alt="Object 02">
+    <span class="project-title">Object 02</span>
+  </a>
+  <a href="project-object-03.html" class="item project" data-category="objects">
+    <img src="images/object-03-cover.jpg" alt="Object 03">
+    <span class="project-title">Object 03</span>
+  </a>
+  <a href="project-object-04.html" class="item project" data-category="objects">
+    <img src="images/object-04-cover.jpg" alt="Object 04">
+    <span class="project-title">Object 04</span>
+  </a>
+
+  <!-- PAINTINGS -->
+  <a href="project-painting-01.html" class="item project is-hidden" data-category="paintings">
+    <img src="images/painting-01.jpg" alt="Painting 01">
+    <span class="project-title">Painting 01</span>
+  </a>
+
+  <!-- ILLUSTRATIONS -->
+  <a href="project-illustration-01.html" class="item project is-hidden" data-category="illustrations">
+    <img src="images/illustration-01.jpg" alt="Illustration 01">
+    <span class="project-title">Illustration 01</span>
+  </a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="contact-inner">
+    <p class="contact-name">DEFORM</p>
     <p><a href="mailto:ilua26@yandex.ru">ilua26@yandex.ru</a></p>
-  </section>
+    <p><a href="https://t.me/Doom_Doom_81" target="_blank">Telegram @Doom_Doom_81</a></p>
+  </div>
+</section>
 
-  <!-- JS -->
-  <script>
-    // Параллакс на движение мыши (desktop)
-    if (window.innerWidth > 768) {
-      const bg = document.querySelector('.bg-parallax');
+<!-- FILTER JS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.gallery-filter button');
+  const items = document.querySelectorAll('.gallery .item');
 
-      document.addEventListener('mousemove', (e) => {
-        const x = (e.clientX / window.innerWidth - 0.5) * 40;
-        const y = (e.clientY / window.innerHeight - 0.5) * 25;
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
 
-        bg.style.setProperty('--bg-x', `${x}px`);
-        bg.style.setProperty('--bg-y', `${y}px`);
+      const filter = btn.dataset.filter;
+
+      items.forEach(item => {
+        item.classList.toggle('is-hidden', item.dataset.category !== filter);
       });
+    });
+  });
+});
+</script>
+
+<!-- FADE-IN JS -->
+<script>
+const faders = document.querySelectorAll('.fade-in, .gallery .item');
+
+const appearOptions = { threshold: 0.1 };
+
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
     }
-  </script>
+  });
+}, appearOptions);
+
+faders.forEach(fader => appearOnScroll.observe(fader));
+</script>
+
+<!-- PARALLAX JS -->
+<script>
+if (window.innerWidth > 768) {
+  const bg = document.querySelector('.bg-parallax');
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 40;
+    const y = (e.clientY / window.innerHeight - 0.5) * 25;
+    bg.style.setProperty('--bg-x', `${x}px`);
+    bg.style.setProperty('--bg-y', `${y}px`);
+  });
+}
+</script>
 
 </body>
 </html>
