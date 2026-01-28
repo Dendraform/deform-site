@@ -26,14 +26,23 @@ body {
 }
 
 /* ========================= LOGO ========================= */
-.logo {
-  margin-bottom: 32px;
+.logo-img {
+  width: 200px;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* центрирование по горизонтали */
 }
 
-.logo-img {
-  width: 200px;     /* Можно менять под дизайн */
-  height: auto;     /* Сохраняет пропорции */
-  display: block;   /* Чтобы убрать лишние отступы под inline элементами */
+@media (max-width: 768px) {
+  .logo-img {
+    width: 160px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-img {
+    width: 140px;
+  }
 }
 
 
@@ -379,4 +388,5 @@ header.hero {
 html {
   background: #16181E;
 }
+
 
