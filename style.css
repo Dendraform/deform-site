@@ -251,9 +251,15 @@ header.hero {
 
 /* Логотип чуть выше, но не впритык */
 .logo {
-  margin-top: 20px;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
+
+.logo-img {
+  width: 220px;
+  height: auto;
+  display: block;
+}
+
 
 /* Фильтры ближе к логотипу */
 .gallery-filter {
@@ -408,6 +414,7 @@ html {
     transform: translateY(0);
   }
 }
+
 
 
 
