@@ -193,11 +193,11 @@ faders.forEach(fader => appearOnScroll.observe(fader));
 	
 <script>
   if (window.innerWidth > 768) {
-    const root = document.documentElement;
+    const root = document.body;
 
     document.addEventListener('mousemove', (e) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 20;
-      const y = (e.clientY / window.innerHeight - 0.5) * 12;
+      const x = (e.clientX / window.innerWidth - 0.5) * 40;
+      const y = (e.clientY / window.innerHeight - 0.5) * 24;
 
       root.style.setProperty('--bg-x', `${x}px`);
       root.style.setProperty('--bg-y', `${y}px`);
@@ -208,8 +208,10 @@ faders.forEach(fader => appearOnScroll.observe(fader));
 
 
 
+
 </body>
 </html>
+
 
 
 
